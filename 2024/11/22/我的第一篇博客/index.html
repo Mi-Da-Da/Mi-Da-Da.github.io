@@ -154,20 +154,20 @@
 <p>​	参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/PengXing_Huang/article/details/136460133">如何解决 npm install 卡在“sill idealTree buildDeps“的问题_npm sill idealtree builddeps-CSDN博客</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmmirror.com //更换成新的淘宝镜像源</span><br><span class="line">npm config get registry //检查镜像源是否更换成功</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.io//67528A9AECF845E2026E6B3E25176905.png"></p>
+<p><img src="67528A9AECF845E2026E6B3E25176905.png"></p>
 <p>​	之后再运行安装express模块的时候就能够正常安装了，出现了如下界面：</p>
-<p><img src="/.io//F627C0E7A4EDB0D6A13C9BB309302BCE.png"></p>
+<p><img src="F627C0E7A4EDB0D6A13C9BB309302BCE.png"></p>
 <p>​	随后按照文章步骤安装cnpm</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
 
 <p>​	执行上述命令查看安装是否成功时，显示”无法加载文件，因为禁止在此系统上运行脚本”</p>
-<p><img src="/.io//61E0CE3BB0F121D1F1F700B0BA9CDDC8.png"></p>
+<p><img src="61E0CE3BB0F121D1F1F700B0BA9CDDC8.png"></p>
 <p>​	博主在网上搜索该问题的解决方法，最后按照下面这篇文章里面的步骤成功查看了cnpm的版本信息。</p>
 <p>​	参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/mehnr/article/details/104497019">cnpm : 无法加载文件 node_global\cnpm.ps1，因为在此系统上禁止运行脚本-CSDN博客</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-ExecutionPolicy RemoteSigned //选择yes</span><br></pre></td></tr></table></figure>
 
 <p>​	之后重新执行cnpm -v命令即可显示：</p>
-<p><img src="/.io//3C5EC5621EDD00C9B67A54CC0031231B.png"></p>
+<p><img src="3C5EC5621EDD00C9B67A54CC0031231B.png"></p>
 <p>​	至此Node.js的安装配置就完成了！</p>
 <h5 id="2-Git的安装"><a href="#2-Git的安装" class="headerlink" title="2.Git的安装"></a>2.Git的安装</h5><p>​	下载网址：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git - Downloads</a></p>
 <p>​	Git的安装相对简单，从官网下载安装即可，博主在这里就不再赘述了。</p>
@@ -175,11 +175,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd d:\</span><br><span class="line">mkdir Hexo //新建一个文件夹</span><br><span class="line"></span><br><span class="line">cd Hexo</span><br><span class="line">npm install -g hexo-cli //安装Hexo</span><br><span class="line"></span><br><span class="line">hexo init MDD_blog //MDD_blog是我自己起的名字，这步为初始化博客</span><br></pre></td></tr></table></figure>
 
 <p>​	按照上述命令执行后得到如下界面即为成功（忽略博主截图里的那个fatal）</p>
-<p><img src="/.io//C6A517D08B60EE2BF2CDF497989B4D45.png"></p>
+<p><img src="C6A517D08B60EE2BF2CDF497989B4D45.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd MDD_blog </span><br><span class="line">hexo s //在本地预览自己的博客</span><br></pre></td></tr></table></figure>
 
 <p>​	出现下图即为成功（Fluid是博主自己保存的主题，新建的博客是默认主题），将网址<a target="_blank" rel="noopener" href="http://localhost:4000/%E7%B2%98%E8%B4%B4%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E7%9C%8B%E5%88%B0%E6%96%B0%E6%90%AD%E5%BB%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E3%80%82">http://localhost:4000/粘贴到浏览器访问即可看到新搭建的博客。</a></p>
-<p><img src="/.io//F9E803647316EE12B7ADB68A190063C8.png"></p>
+<p><img src="F9E803647316EE12B7ADB68A190063C8.png"></p>
 <p>​	到这里就恭喜大家成功搭建自己的博客啦！当然这只是完成了一大半，后面还要关联博客到Github仓库，才能实现从网页访问自己的博客。</p>
 <h4 id="三、关联博客到Github仓库"><a href="#三、关联博客到Github仓库" class="headerlink" title="三、关联博客到Github仓库"></a>三、关联博客到Github仓库</h4><p>这一部分推荐大家看下面这篇文章，里面内容非常详细，博主也在按照步骤一步一步进行，但在配置ssh密钥时还是出现了问题。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44161695/article/details/117605288">使用Hexo搭建个人博客，绑定GitHub以及个人域名_本地的hexo服务和github绑定起来-CSDN博客</a></p>
@@ -191,11 +191,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">	Hostname ssh.github.com</span><br><span class="line">	Port 443</span><br><span class="line">	User git</span><br></pre></td></tr></table></figure>
 
 <p>之后再运行上述命令就可以成功连接了。随后按照文章接下来的步骤即可成功关联仓库，搭建如下的博客页面了！</p>
-<p><img src="/.io//793663841AB61E0052E78A8889542B12.png"></p>
+<p><img src="793663841AB61E0052E78A8889542B12.png"></p>
 <h4 id="四、写博客文章并上传"><a href="#四、写博客文章并上传" class="headerlink" title="四、写博客文章并上传"></a>四、写博客文章并上传</h4><h5 id="1-撰写博客文章"><a href="#1-撰写博客文章" class="headerlink" title="1.撰写博客文章"></a>1.撰写博客文章</h5><p>​	相信大家在搭建好博客网页后都迫不及待的想要发表自己的第一篇文章，博主也是如此。博主用了Typora这一Markdown语言的编辑器来写文章，然而在插入图片的时候遇到了问题。博主插入本地图片后在本地可以显示，但是上传上去以后无法显示。为此，经过一番百度搜索，博主终于找到了解决方法，如下所示</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//在博客文件夹的_config.yml文件修改</span><br><span class="line">post_asset_folder: true</span><br><span class="line">//这样在创建新的.md文件的同时也会创建对应的文件夹，之后将文章中的图片放到该文件夹中即可</span><br><span class="line">//在博客文件夹下打开git bash，安装新插件，命令如下</span><br><span class="line">npm install hexo-asset-img --save(如果npm无法连接或者报错的话，可以使用cnpm install hexo-asset-img --save安装)</span><br><span class="line">//之后修改/node_modules/hexo-asset-image/index.js文件的第58行代码，改为下图所示的样子</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.io//image-20250213181755868.png"></p>
+<p><img src="image-20250213181755868.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">插入图片名称如下：</span><br><span class="line">！[](./图片路径/图片名.图片后缀) // 路径使用相对路径，也就是复制图片路径后只保留当前.md文件对应文件夹及之后的路径</span><br><span class="line">例如上面图片的路径为./我的第一篇博客/image-20250213181755868.png</span><br></pre></td></tr></table></figure>
 
 <p>​	附文章链接<a target="_blank" rel="noopener" href="https://feifeining.github.io/2024/09/14/test/index.html">关于hexo butterfly 文章内容图片加载不出来问题 | FeiFei</a>	</p>
@@ -211,7 +211,7 @@
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF-RSA/"><span class="card-category-list-name">CTF-RSA</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%88%9D%E8%A7%81/"><span class="card-category-list-name">初见</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">1</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/" style="font-size: 1.1em; color: #999">数据库原理及应用</a> <a href="/tags/hello-world/" style="font-size: 1.1em; color: #999">hello_world</a> <a href="/tags/CTF%E8%90%8C%E6%96%B0-Crypto-RSA/" style="font-size: 1.5em; color: #99a9bf">CTF萌新 Crypto RSA</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CTF%E8%90%8C%E6%96%B0-Crypto-RSA/" style="font-size: 1.5em; color: #99a9bf">CTF萌新 Crypto RSA</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/" style="font-size: 1.1em; color: #999">数据库原理及应用</a> <a href="/tags/hello-world/" style="font-size: 1.1em; color: #999">hello_world</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>归档</span>
@@ -248,4 +248,4 @@
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">4</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">4.7k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-06T02:52:27.252Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">4</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">4.7k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-06T02:57:01.087Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
