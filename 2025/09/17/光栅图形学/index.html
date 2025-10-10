@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>光栅图形学 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="扫描转换直线的扫描转换算法这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。 直线方程为y&#x3D;kx+b，已知P0(x0,y0)，由于像素点坐标为整数，需要通过四舍五入进行取整操作  数值微分法(DDA) 如下图所示，可以发现(x_i,y_i)和(x_{i+1},y_{i+1})都可以看做在直线上，因此可以得到下面的直线方程：\\ y_i &#x3D; kx_i+b\\ y_{i+1}&#x3D;kx">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>光栅图形学 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="扫描转换直线的扫描转换算法这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。 直线方程为y&#x3D;kx+b，已知P0(x0,y0)，由于像素点坐标为整数，需要通过四舍五入进行取整操作  数值微分法(DDA)  基本思想：增量思想，将乘法转换为加法，提高了算法的效率 优点：提出了增量的思想，奠定了基础 缺点：在k绝对值大于1的情况下，光栅点过于稀少，无法真实呈现直线 中点画线法   基">
 <meta property="og:type" content="article">
 <meta property="og:title" content="光栅图形学">
 <meta property="og:url" content="http://mi-da-da.github.io/2025/09/17/%E5%85%89%E6%A0%85%E5%9B%BE%E5%BD%A2%E5%AD%A6/index.html">
 <meta property="og:site_name" content="米大大的Blog">
-<meta property="og:description" content="扫描转换直线的扫描转换算法这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。 直线方程为y&#x3D;kx+b，已知P0(x0,y0)，由于像素点坐标为整数，需要通过四舍五入进行取整操作  数值微分法(DDA) 如下图所示，可以发现(x_i,y_i)和(x_{i+1},y_{i+1})都可以看做在直线上，因此可以得到下面的直线方程：\\ y_i &#x3D; kx_i+b\\ y_{i+1}&#x3D;kx">
+<meta property="og:description" content="扫描转换直线的扫描转换算法这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。 直线方程为y&#x3D;kx+b，已知P0(x0,y0)，由于像素点坐标为整数，需要通过四舍五入进行取整操作  数值微分法(DDA)  基本思想：增量思想，将乘法转换为加法，提高了算法的效率 优点：提出了增量的思想，奠定了基础 缺点：在k绝对值大于1的情况下，光栅点过于稀少，无法真实呈现直线 中点画线法   基">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.pngsucai.com/00/04/88/be45dcb51a415808.webp">
 <meta property="article:published_time" content="2025-09-17T10:48:42.000Z">
-<meta property="article:modified_time" content="2025-10-10T14:07:19.388Z">
+<meta property="article:modified_time" content="2025-10-10T14:21:48.311Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="光栅图形学">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://mi-da-da.github.io/2025/09/17/%E5%85%89%E6%A0%85%E5%9B%BE%E5%BD%A2%E5%AD%A6/",
   "image": "https://pic.pngsucai.com/00/04/88/be45dcb51a415808.webp",
   "datePublished": "2025-09-17T10:48:42.000Z",
-  "dateModified": "2025-10-10T14:07:19.388Z",
+  "dateModified": "2025-10-10T14:21:48.311Z",
   "author": [
     {
       "@type": "Person",
@@ -159,50 +159,17 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.pngsucai.com/00/04/88/be45dcb51a415808.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">光栅图形学</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">光栅图形学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-17T10:48:42.000Z" title="发表于 2025-09-17 18:48:42">2025-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-10T14:07:19.388Z" title="更新于 2025-10-10 22:07:19">2025-10-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">309</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="扫描转换"><a href="#扫描转换" class="headerlink" title="扫描转换"></a>扫描转换</h1><h2 id="直线的扫描转换算法"><a href="#直线的扫描转换算法" class="headerlink" title="直线的扫描转换算法"></a>直线的扫描转换算法</h2><p>这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.pngsucai.com/00/04/88/be45dcb51a415808.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">光栅图形学</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">光栅图形学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-17T10:48:42.000Z" title="发表于 2025-09-17 18:48:42">2025-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-10T14:21:48.311Z" title="更新于 2025-10-10 22:21:48">2025-10-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">5.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="扫描转换"><a href="#扫描转换" class="headerlink" title="扫描转换"></a>扫描转换</h1><h2 id="直线的扫描转换算法"><a href="#直线的扫描转换算法" class="headerlink" title="直线的扫描转换算法"></a>直线的扫描转换算法</h2><p>这一算法主要是使用离散的像素点逼近真实的直线，从而让视觉效果更加真实。</p>
 <p>直线方程为y=kx+b，已知P<sub>0</sub>(x<sub>0</sub>,y<sub>0</sub>)，由于像素点坐标为整数，需要通过四舍五入进行取整操作</p>
 <p><img src="1.png" alt="image-20250917185725796"></p>
-<h3 id="数值微分法-DDA"><a href="#数值微分法-DDA" class="headerlink" title="数值微分法(DDA)"></a>数值微分法(DDA)</h3><script type="math/tex; mode=display">
-如下图所示，可以发现(x_i,y_i)和(x_{i+1},y_{i+1})都可以看做在直线上，因此可以得到下面的直线方程：\\
-y_i = kx_i+b\\
-y_{i+1}=kx_{i+1}+b\\
-y_{i+1}=k(x_i+1)+b\\
-y_{i+1}=kx_i+b+k\\
-所以得到y_{i+1}=y_i+k\\
-这样只需要给上一个点的y加上k再取整即可得到当前点的y</script><p><img src="26.png" alt></p>
+<h3 id="数值微分法-DDA"><a href="#数值微分法-DDA" class="headerlink" title="数值微分法(DDA)"></a>数值微分法(DDA)</h3><p><img src="26.png" alt></p>
 <p><img src="2.png" alt></p>
 <p><strong>基本思想：</strong>增量思想，将乘法转换为加法，提高了算法的效率</p>
 <p><strong>优点：</strong>提出了增量的思想，奠定了基础</p>
 <p><strong>缺点：</strong>在k绝对值大于1的情况下，光栅点过于稀少，无法真实呈现直线</p>
-<h3 id="中点画线法"><a href="#中点画线法" class="headerlink" title="中点画线法"></a>中点画线法</h3><script type="math/tex; mode=display">
-该方法使用直线的一般方程，即F(x,y)=0\\
-对于直线上的点，F(x,y)=0;对于直线上方的点，F(x,y)>0;对于直线下方的点，F(x,y)<0\\
-每次在最大位移方向上走一步，另一个方向根据中点误差项判断\\
-如图所示，将中点M的坐标带入直线方程得到d，如果d<0，就在Q的下方则下一个像素点选择P_u;反之则选择P_d</script><p><img src="27.png" alt></p>
+<h3 id="中点画线法"><a href="#中点画线法" class="headerlink" title="中点画线法"></a>中点画线法</h3><p><img src="27.png" alt></p>
 <p><img src="3.png" alt></p>
-<script type="math/tex; mode=display">
-d<0:\\
-d_0=A(x_i+1)+B(y_i+0.5)+C\\
-d_1=A(x_i+2)+B(y_i+1.5)+C\\
-d_1=A(x_i+1)+B(y_i+0.5)+C+A+B\\
-d_1=d_0+A+B\\
-d>0:\\
-d_0=A(x_i+1)+B(y_i+0.5)+C\\
-d_1=A(x_i+2)+B(y_i+0.5)+C\\
-d_1=A(x_i+1)+B(y_i+0.5)+C+A\\
-d_1=d_0+A\\
-又因为d_0=A(x_0+1)+B(y_0+0.5)+C\\
-d_0=Ax_0+By_0+C+A+0.5B\\
-而且Ax_0+By_0+C=0\\
-所以可以得到d_0=A+0.5B\\
-\\
-因此d的递推公式如下：
-d_{new}=\begin{cases}
-{d_{old}+A+B}{\quad}d\leq0,\\
-{d_{old}+A}{\quad}d\geq0
-\end{cases}\\
-d_0=A+0.5B\\
-可以用2d代替d，这样可以消除小数</script><p><img src="28.png" alt></p>
+<p><img src="28.png" alt></p>
 <p><strong>基本思想：</strong>每次在最大位移方向上走一步，另一方向根据中点误差项判断</p>
 <p><strong>优点：</strong>通过中点误差项解决了DDA光栅点稀少的问题，让直线的绘制更加准确</p>
 <p><strong>缺点：</strong>严重依赖于直线方程，扩展性低</p>
@@ -210,13 +177,7 @@ d_0=A+0.5B\\
 初始值d_0=0\\
 d=d+k，如果d\geq1，则d=d-1\\</script><p><img src="4.png" alt></p>
 <p><strong>基本思想：</strong>通过各行、各列像素中心构造虚拟网格线，按照直线起点到终点的顺序，计算直线与各垂直网格线的交点，然后根据误差项的符号确定该列像素中距离最近的像素。</p>
-<script type="math/tex; mode=display">
-d_0=0\\
-d=d+k，如果d{\geq}1，d=d-1，这样可以保证d{\in}(0,1)\\
-令e=d-0.5，减少浮点运算\\
-则e{\in}(-1,0),e_0=-0.5\\
-考虑到k=dy/dx,则e=e*dx*2,这样k=2*dy,e_0=-dx\\
-因此得到e的递推公式为e=e+2*dy,当e>0时，e=e-2dx\\</script><p><img src="29.png" alt></p>
+<p><img src="29.png" alt></p>
 <p><strong>算法步骤：</strong></p>
 <ol>
 <li>输入两端点P<sub>0</sub>(x<sub>0</sub>,y<sub>0</sub>)和P<sub>1</sub>(x<sub>1</sub>,y<sub>1</sub>)</li>
@@ -308,7 +269,7 @@ d=d+k，如果d{\geq}1，d=d-1，这样可以保证d{\in}(0,1)\\
 <li><p>不满足上述两种情况，则进行编码处理</p>
 </li>
 </ul>
-<p><strong>编码规则：</strong>对每条线段的端点进行D<sub>3</sub>D<sub>2</sub>D<sub>1</sub>D<sub>0</sub>编码，若x &lt; x<sub>left</sub>，则D<sub>0</sub>=1，否则为1；若x &gt; x<sub>right</sub>，则D<sub>1</sub>=1，否则为0；若y &lt; y<sub>buttom</sub>，则D<sub>2</sub>=1，否则为0；若y &gt; y<sub>top</sub>，则D<sub>3</sub>=1，否则为0</p>
+<p><strong>编码规则：</strong>对每条线段的端点进行D<sub>3</sub>D<sub>2</sub>D<sub>1</sub>D<sub>0</sub>编码，若x &lt; x<sub>left</sub>，则D<sub>0</sub>=1，否则为1；若x &gt; x<sub>right</sub>，则D<sub>1</sub>=1，否则为0；若y &lt; y<sub>bottom</sub>，则D<sub>2</sub>=1，否则为0；若y &gt; y<sub>top</sub>，则D<sub>3</sub>=1，否则为0</p>
 <p>该算法先对两个端点进行编码，然后再进行与或运算</p>
 <ul>
 <li>code1 | code2=0，那么这一线段一定在窗口内，应当保留</li>
@@ -355,6 +316,7 @@ u_{min}=min\{u_k,1\},u_k对应的两个p_k都大于0\\
 将两个u值代入参数方程，这样就得到了直线与窗口的两个交点</script><p><img src="30.png" alt></p>
 <p><strong>优点：</strong>这一算法避免了求交运算，大大提升了运算效率</p>
 <p><strong>上述的三种算法都只能应用于矩形窗口的裁剪，不能应用于其他窗口的裁剪！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">直线的参数方程为：\\</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">x = x_1 + u·&#123;\delta&#125;x\\</span><br><span class="line">y = y_1 + u·&#123;\delta&#125;y\\</span><br><span class="line">其中0&#123;\leq&#125;u&#123;\leq&#125;1</span><br><span class="line">\end&#123;cases&#125;\\</span><br><span class="line">对于上面的直线方程，若满足如下条件，则在窗口内：\\</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">x_&#123;left&#125;&#123;\leq&#125;x_1 + u·&#123;\delta&#125;x&#123;\leq&#125;x_&#123;right&#125;\\</span><br><span class="line">y_&#123;bottom&#125;&#123;\leq&#125;y_1 + u·&#123;\delta&#125;y&#123;\leq&#125;y_&#123;top&#125;</span><br><span class="line">\end&#123;cases&#125;\\</span><br><span class="line">对上述的不等式化简可得：\\</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">-&#123;\delta&#125;x·u&#123;\leq&#125;x_1-x_&#123;left&#125;\\</span><br><span class="line">&#123;\delta&#125;x·u&#123;\leq&#125;x_&#123;right&#125;-x_1\\</span><br><span class="line">-&#123;\delta&#125;y·u&#123;\leq&#125;y_1-y_&#123;bottom&#125;\\</span><br><span class="line">&#123;\delta&#125;y·u&#123;\leq&#125;y_&#123;top&#125;-y_1\\</span><br><span class="line">\end&#123;cases&#125;\\</span><br><span class="line">作如下替换p1=-&#123;\delta&#125;x,p2=&#123;\delta&#125;x,p3=-&#123;\delta&#125;y,p4=&#123;\delta&#125;y\\</span><br><span class="line">q1=x_1-x_&#123;left&#125;,q2=x_&#123;right&#125;-x_1,q3=y_1-y_&#123;bottom&#125;,q4=y_&#123;top&#125;-y_1\\</span><br><span class="line">那么就可以得到p_k·u&#123;\leq&#125;q_k,其中k=1,2,3,4，分别代表左右下上四个边界\\</span><br><span class="line">根据推导可知，当p_k&lt;0时对应两条入边，p_k&gt;0时对应两条出边\\</span><br><span class="line">按照上面的方法可以求出4个u_k,然后再加上0和1一共6个u值\\</span><br><span class="line">u_&#123;max&#125;=max\&#123;0,u_k\&#125;,u_k对应的两个p_k都小于0\\</span><br><span class="line">u_&#123;min&#125;=min\&#123;u_k,1\&#125;,u_k对应的两个p_k都大于0\\</span><br><span class="line">将两个u值代入参数方程，这样就得到了直线与窗口的两个交点</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <h2 id="多边形裁剪"><a href="#多边形裁剪" class="headerlink" title="多边形裁剪"></a>多边形裁剪</h2><h3 id="Sutherlan-Hodgeman算法"><a href="#Sutherlan-Hodgeman算法" class="headerlink" title="Sutherlan-Hodgeman算法"></a>Sutherlan-Hodgeman算法</h3><p><strong>基本思想：</strong>将多边形看做整体，每次用窗口的一条边对多边形和中间结果多边形进行裁剪</p>
 <p>过程如下：</p>
 <p><img src="16.png" alt></p>
