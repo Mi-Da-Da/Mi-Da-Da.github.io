@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>考研之计算机网络——数据链路层 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据链路层基础知识基本概念 数据链路层使用物理层提供的“比特传输”服务。 数据链路层为网络层提供服务，将网络层的IP数据报（分组）封装成帧，传输给下一个相邻结点。  物理链路：传输介质和物理层实现了相邻结点之间的物理链路。  逻辑链路：数据链路层需要基于“物理链路”，实现相邻结点之间逻辑上无差错的“数据链路”。  功能 封装成帧（组帧） 帧定界：如何让接收方能够确定帧的界限。 透明传输：接收方链路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研之计算机网络——数据链路层">
+<meta property="og:url" content="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
+<meta property="og:site_name" content="米大大的Blog">
+<meta property="og:description" content="数据链路层基础知识基本概念 数据链路层使用物理层提供的“比特传输”服务。 数据链路层为网络层提供服务，将网络层的IP数据报（分组）封装成帧，传输给下一个相邻结点。  物理链路：传输介质和物理层实现了相邻结点之间的物理链路。  逻辑链路：数据链路层需要基于“物理链路”，实现相邻结点之间逻辑上无差错的“数据链路”。  功能 封装成帧（组帧） 帧定界：如何让接收方能够确定帧的界限。 透明传输：接收方链路">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg">
+<meta property="article:published_time" content="2026-04-21T10:02:06.000Z">
+<meta property="article:modified_time" content="2026-05-11T07:27:26.756Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="计算机网络 数据链路层">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "考研之计算机网络——数据链路层",
+  "url": "http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/",
+  "image": "http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg",
+  "datePublished": "2026-04-21T10:02:06.000Z",
+  "dateModified": "2026-05-11T07:27:26.756Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Tom",
+      "url": "http://mi-da-da.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/20191009090430_tcbij.jpg"><link rel="canonical" href="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '考研之计算机网络——数据链路层',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">考研之计算机网络——数据链路层</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">考研之计算机网络——数据链路层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-21T10:02:06.000Z" title="发表于 2026-04-21 18:02:06">2026-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-11T07:27:26.756Z" title="更新于 2026-05-11 15:27:26">2026-05-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%80%83%E7%A0%94/">考研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a><center>数据链路层</center></h1><h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>数据链路层使用物理层提供的“比特传输”服务。</li>
+<li><p>数据链路层为网络层提供服务，将网络层的<font color="royalblue">IP数据报（分组）</font>封装成<font color="orangered">帧</font>，传输给下一个相邻结点。</p>
+</li>
+<li><p>物理链路：传输介质和物理层实现了相邻结点之间的<font color="orangered">物理链路</font>。</p>
+</li>
+<li>逻辑链路：数据链路层需要基于“物理链路”，实现相邻结点之间逻辑上无差错的“<font color="orangered">数据链路</font>”。</li>
+</ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>封装成帧（组帧）<ul>
+<li>帧定界：如何让接收方能够确定帧的界限。</li>
+<li>透明传输：接收方链路层要能从收到的帧内恢复原始$SDU$，对上层屏蔽。</li>
+</ul>
+</li>
+<li>差错控制：发现并解决一个帧内部的“<font color="red">位错</font>”。<ul>
+<li>解决方案一：接收方发现比特错后<font color="red">丢弃帧</font>，发送方<font color="red">重传帧</font>。</li>
+<li>解决方案二：<font color="red">由接收方发现并纠正比特错误，采用纠错编码技术。</font></li>
+</ul>
+</li>
+<li>可靠传输：发现并解决<font color="royalblue">“帧错误”</font>。<ul>
+<li><font color="royalblue">帧丢失</font>：发送$1234$，收到$124$。</li>
+<li><font color="royalblue">帧重复</font>：发送$1234$，收到$12334$。</li>
+<li><font color="royalblue">帧失序</font>：发送$1234$，收到$1324$。</li>
+</ul>
+</li>
+<li>流量控制：控制发送方发送帧的速率，让接收方能够及时接收。</li>
+<li>介质访问控制：<font color="Mulberry">广播信道</font>需要实现此功能，<font color="Periwinkle">点对点信道</font>不需要实现。</li>
+</ul>
+<h1 id="组帧"><a href="#组帧" class="headerlink" title="组帧"></a>组帧</h1><p>&emsp;&emsp;帧由首部、数据部分、尾部构成，首部和尾部主要是控制信息。</p>
+<h2 id="字符计数法"><a href="#字符计数法" class="headerlink" title="字符计数法"></a>字符计数法</h2><p>&emsp;&emsp;在每个帧的开头，用一个<font color="red">定长计数字段</font>表示帧长，帧长包括计数字段长度和帧的数据部分长度。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/1.png" alt></p>
+<ul>
+<li>缺点：任何一个计数字段出错，都会导致后续所有帧无法定界。</li>
+</ul>
+<h2 id="字节填充法"><a href="#字节填充法" class="headerlink" title="字节填充法"></a>字节填充法</h2><p>&emsp;&emsp;使用$ASCII$字符控制，开头使用$SOH(0x01)$，结尾使用$EOT(0x04)$，转义字符使用$ESC(0X1B)$。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/2.png" alt></p>
+<h2 id="零比特填充法"><a href="#零比特填充法" class="headerlink" title="零比特填充法"></a>零比特填充法</h2><p>&emsp;&emsp;使用特殊的比特串$0x7E(01111110)$标记帧开始和结尾。</p>
+<ul>
+<li>发送方对数据部分进行处理，在遇到连续的$5$个$1$时，填充一个$0$。</li>
+<li>接收方对数据部分进行处理，在遇到连续的$5$个$1$时，删除一个$0$。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/3.png" alt></p>
+<ul>
+<li>该方法使用硬件可以高效实现，目前有$HDLC$协议和$PPP$协议。</li>
+</ul>
+<h2 id="违规编码法"><a href="#违规编码法" class="headerlink" title="违规编码法"></a>违规编码法</h2><p>&emsp;&emsp;使用违规编码（基于曼彻斯特编码），用违规信号表示帧的开头和结尾，该方法需要物理层的配合。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/4.png" alt></p>
+<h1 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h1><h2 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h2><ul>
+<li>奇校验码：整个校验码（有效位和校验码）中$1$的个数为奇数。</li>
+<li>偶校验码：整个校验码（有效位和校验码）中$1$的个数为偶数。<ul>
+<li>发送方：所有位进行异或运算，得到的结果即为偶校验码。</li>
+<li>接收方：所有位进行异或运算，与校验位进行比对，不一致则出现错误。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/5.png" alt></p>
+<ul>
+<li>缺点：奇偶校验码<font color="orangered">仅能检测出奇数位错误，无纠错能力</font>。</li>
+</ul>
+<h2 id="循环冗余校验码-CRC"><a href="#循环冗余校验码-CRC" class="headerlink" title="循环冗余校验码(CRC)"></a>循环冗余校验码(CRC)</h2><p>&emsp;&emsp;数据发送和接收方约定一个“除数”，$K$个信息位和$R$个校验位构成“被除数”，添加校验位后需要保证<font color="royalblue">除法</font>的余数为$0$，收到数据后使用<font color="royalblue">除法</font>检查结果是否为$0$即可。</p>
+<ul>
+<li>一般使用<font color="red">生成多项式</font>的方式给出除数，例如$G(x)=x^3+x^2+1$，该多项式可以看做$1 \cdot x^3 + 1 \cdot x^2 + 0 \cdot x + 1 \cdot x^0$，因此对应的除数就是$1101$。</li>
+<li>$K$对应信息码的长度，$R$对应生成多项式的最高次幂。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/6.png" alt></p>
+<p>&emsp;&emsp;构造校验码的步骤如下：</p>
+<ol>
+<li>确定$K$和$R$。</li>
+<li>确定生成多项式对应的二进制码。</li>
+<li>原始信息码左移$R$位。</li>
+<li>移位后的信息码和生成多项式对应的二进制码进行<font color="Mulberry">模$2$除法（模$2$加减法即为异或）</font>，产生$3$位余数，将其与移位后的信息码进行或运算即可（将余数拼到原始信息码的后面）。</li>
+</ol>
+<p>&emsp;&emsp;对于确定的生成多项式，出错位与余数是相对应的。如下的例子中，生成多项式为$1101$，信息码为$0100$。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/7.png" alt></p>
+<ul>
+<li>可检测出所有奇数个错误。</li>
+<li>可检测出所有双比特的错误。</li>
+<li>可检测出所有小于等于校验位长度的连续错误。</li>
+<li>$K$个信息位，$R$个检验位，若生成多项式选择得当，且$2^R \ge K+R+1$，则$CRC$码可纠正$1$位错。</li>
+</ul>
+<h2 id="汉明（海明）校验码"><a href="#汉明（海明）校验码" class="headerlink" title="汉明（海明）校验码"></a>汉明（海明）校验码</h2><p>&emsp;&emsp;将信息位分组进行偶校验，每个分组对应一个校验位，多个校验位标注出错位置。计算步骤如下：</p>
+<ol>
+<li>确定汉明码的位数：$2^k \ge n+k+1$，$n$为信息位长度，$k$为校验位长度。设信息位$D_4D_3D_2D_1$，校验位$P_3P_2P_1$，对应的汉明码为$H_7H_6H_5H_4H_3H_2H_1$。</li>
+<li>确定校验位的分布：校验位$P_i$放到汉明码位号为$2^{i-1}$的位置。</li>
+</ol>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/8.png" alt></p>
+<ol>
+<li>求校验位的值：将信息位的位置序号用$k$位二进制数表示出来，检验位$P_i$与位置序号二进制数第$i$位为$1$的信息位归为同一分组，计算偶校验位并填入对应的汉明码位置。</li>
+</ol>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/9.png" alt></p>
+<ol>
+<li>纠错：对各个分组计算偶校验位$S_i$，并添加全体偶校验位。<ul>
+<li>$S_i$全为$0$并且全体偶校验成功，说明没有出现错误。</li>
+<li>$S<em>i$不全为$0$并且全体偶校验失败，说明有$1$位出现错误，该位号的二进制表示为$S_kS</em>{k-1}…S_1$，纠正即可。</li>
+<li>$S_i$不全为$0$并且全体偶校验成功，说明有$2$位错误，需要重传。</li>
+<li>汉明码的检错能力只有$2$位，如果大于$2$位应当另行讨论。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/10.png" alt></p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/11.png" alt></p>
+<p>&emsp;&emsp;<strong>注意：二进制位的编号可能是从小到大也可能是从大到小，应当根据编号顺序进行调整。</strong></p>
+<h1 id="流量控制与可靠传输"><a href="#流量控制与可靠传输" class="headerlink" title="流量控制与可靠传输"></a>流量控制与可靠传输</h1><h2 id="相关机制"><a href="#相关机制" class="headerlink" title="相关机制"></a>相关机制</h2><h3 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h3><ul>
+<li>发送窗口$W_T$：发送方当前允许发送的帧。</li>
+<li>接收窗口$W_R$：接收方当前允许接收的帧。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/12.png" alt></p>
+<ul>
+<li>接收方会接收当前接收窗口内的帧，接收窗口外的帧会被丢弃。接收完后接收窗口会向右滑动，同时<strong>接收方会控制发送方的发送窗口</strong>向右滑动。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/13.png" alt></p>
+<h3 id="确认机制"><a href="#确认机制" class="headerlink" title="确认机制"></a>确认机制</h3><ul>
+<li><font color="royalblue">确认帧$ACK_i$</font>：接收方收到$i$号帧并且检验无差错，则给发送方返回确认帧$ACK_i$。</li>
+<li><font color="Mulberry">否认帧$NAK_i$</font>：接收方收到$i$号帧并且检验有差错，则给发送方返回否认帧$NAK_i$。</li>
+</ul>
+<h3 id="重传机制"><a href="#重传机制" class="headerlink" title="重传机制"></a>重传机制</h3><ul>
+<li><font color="royalblue">超时重传</font>：若发送方<font color="royalblue">超时未接收到确认帧</font>，则重传$i$号帧。</li>
+<li><font color="Mulberry">请求重传</font>：若发送方<font color="Mulberry">收到否认帧</font>，则重传$i$号帧。</li>
+</ul>
+<h3 id="帧编号"><a href="#帧编号" class="headerlink" title="帧编号"></a>帧编号</h3><p>&emsp;&emsp;为了支持以上机制正确运行，<font color="red">至少</font>用<font color="red">$nbit$</font>给帧编号，要求<font color="red">$W_T+W_R \le 2^n$</font>，否则会导致帧序号混乱，数据帧被错误接收。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/15.png" alt></p>
+<h2 id="停止等待协议-S-W"><a href="#停止等待协议-S-W" class="headerlink" title="停止等待协议(S-W)"></a>停止等待协议(S-W)</h2><ul>
+<li>滑动窗口机制：发送方和接收方窗口大小均为$1$，不存在<font color="Mulberry">帧失序</font>的问题。</li>
+<li>确认机制：使用确认帧机制。</li>
+<li>重传机制：使用超时重传机制。</li>
+<li>帧编号：仅需$1bit$给帧编号。</li>
+</ul>
+<h3 id="实现流量控制"><a href="#实现流量控制" class="headerlink" title="实现流量控制"></a>实现流量控制</h3><ol>
+<li>发送方发送数据帧并开启计时器，如果计时器超时则自动重传。</li>
+<li>接收方收到数据帧确认无误，窗口向后滑动并给发送方发送确认帧。</li>
+<li>发送窗口收到确认帧，发送窗口向后滑动。</li>
+<li><font color="red">接收方控制了发送窗口的滑动速度，实现了流量控制。</font>
+
+</li>
+</ol>
+<h3 id="实现可靠传输"><a href="#实现可靠传输" class="headerlink" title="实现可靠传输"></a>实现可靠传输</h3><ul>
+<li>帧丢失：发送方发送数据帧并开启计时器，计时器超时仍未接收到确认帧，则自动重传并重置计时器。</li>
+<li>帧重复：<ol>
+<li>接收方发送确认帧并向右滑动接收窗口，但是<strong>确认帧丢失</strong>。</li>
+<li>发送方超时重传数据帧。</li>
+<li>接收方丢弃重复帧，并返回重复帧的确认帧。</li>
+<li>发送方收到确认帧，向右滑动发送窗口。</li>
+</ol>
+</li>
+<li>帧错误：<ol>
+<li>接收方收到数据帧发现<strong>校验出错</strong>，直接丢弃。</li>
+<li>发送方超时重传数据帧。</li>
+<li>接收方收到重传的数据帧检验无误，向右滑动接收窗口，返回确认帧。</li>
+<li>发送方收到确认帧，向右滑动发送窗口。</li>
+</ol>
+</li>
+</ul>
+<h2 id="后退N帧协议-GBN"><a href="#后退N帧协议-GBN" class="headerlink" title="后退N帧协议(GBN)"></a>后退N帧协议(GBN)</h2><ul>
+<li>滑动窗口机制：发送窗口$W_T &gt; 1$，接收窗口$W_R=1$。</li>
+<li>确认机制：使用累积确认，连续收到多个数据帧，<font color="orangered">仅返回最后一个帧的确认帧</font>。</li>
+<li>重传机制：使用超时重传机制。</li>
+<li>帧编号：使用<font color="orangered">$nbit$</font>给帧编号，<font color="orangered">$W_T+W_R \le 2^n$</font>。</li>
+<li>缺点：如果接收方接收帧的速度很慢，或者在信道误码率非常高的情况下，会导致发送方多次后退，传输效率低。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/14.png" alt></p>
+<h3 id="实现可靠传输-1"><a href="#实现可靠传输-1" class="headerlink" title="实现可靠传输"></a>实现可靠传输</h3><ul>
+<li>帧丢失：<ol>
+<li>某个数据帧因通信故障丢失，后续帧落在接收窗口之外被接收方丢弃。</li>
+<li>接收方返回最后一个正确接收的数据帧的确认帧。</li>
+<li><font color="royalblue">发送方收到$ACK_i$，回退到$i+1$号帧并重新发送。</font></li>
+</ol>
+</li>
+<li>帧重复：<ol>
+<li>接收方发送确认帧并向右滑动接收窗口，但是<strong>确认帧丢失</strong>。</li>
+<li>发送方超时重传数据帧。</li>
+<li>接收方丢弃重复帧，并返回最后一个正确接收的数据帧的确认帧。</li>
+<li>发送方收到确认帧，向右滑动发送窗口。</li>
+</ol>
+</li>
+</ul>
+<h2 id="选择重传协议-SR"><a href="#选择重传协议-SR" class="headerlink" title="选择重传协议(SR)"></a>选择重传协议(SR)</h2><ul>
+<li>滑动窗口机制：发送窗口$W_T &gt; 1$，接收窗口$W_R&gt;1$。</li>
+<li>确认机制：不支持累积确认，必须<font color="royalblue">逐帧确认</font>，如果出现差错则返回<font color="Mulberry">否认帧$NAK_i$</font>。</li>
+<li>重传机制：使用超时重传机制。</li>
+<li>帧编号：使用<font color="orangered">$nbit$</font>给帧编号，<font color="orangered">$W_T+W_R \le 2^n$</font>，并且<font color="orangered">$W_R \le W_T$</font>。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/16.png" alt></p>
+<h3 id="实现可靠传输-2"><a href="#实现可靠传输-2" class="headerlink" title="实现可靠传输"></a>实现可靠传输</h3><ul>
+<li><p>帧丢失：</p>
+<ol>
+<li>发送方发送$4567$，接收方收到$467$并返回确认帧，向右滑动接收窗口到$5$号帧的位置，同时发送窗口也向右滑动。</li>
+</ol>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/17.png" alt></p>
+<ol>
+<li>发送方未接收到$5$号帧的确认帧，超时重传。</li>
+</ol>
+</li>
+<li><p>帧重复：</p>
+<ol>
+<li>发送方发送$1234$，接收方收到$1234$并返回确认帧，$1$号和$3$号的确认帧丢失。</li>
+<li>发送方向右滑动发送窗口，超时重传未收到确认帧的数据帧。</li>
+<li>接收方丢弃重复帧，并返回重复帧的确认帧。</li>
+<li>发送方收到确认帧，向右滑动发送窗口。</li>
+</ol>
+</li>
+<li><p>帧出错：</p>
+<ol>
+<li>发送方发送$4567$，接收方收到$4567$，但是$5$号帧出错，返回$467$号的确认帧和$5$号的否认帧。</li>
+<li>发送方主动重传$5$号帧并重置计时器，提升传输效率。</li>
+</ol>
+</li>
+</ul>
+<h2 id="信道利用率分析"><a href="#信道利用率分析" class="headerlink" title="信道利用率分析"></a>信道利用率分析</h2><p>&emsp;&emsp;假设信道的数据传输速率为$1kbps$，<font color="orangered">数据帧长度为$4kb$</font>，<font color="Mulberry">确认帧长度为$1kb$</font>，<font color="royalblue">信道单向传播时延为$7s$</font>。</p>
+<ul>
+<li>$S-W$协议的发送信道利用率如下所示，理想情况下信道利用率为$U=\frac{T_D}{T_D+RTT+T_A}$。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/18.png" alt></p>
+<ul>
+<li>$GBN$和$SR$协议的发送信道利用率如下所示，理想情况下信道利用率为$U=\frac{N \times T_D}{T_D+RTT+T_A}$。这里认为接收方能够连续不断的接收数据帧，如果分子大于分母，则认为信道利用率为$1$。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/19.png" alt></p>
+<ul>
+<li>滑动窗口协议一般指$GBN$或$SR$协议。</li>
+<li>$ARQ$协议是自动重传请求协议，一般指$S-W$或$GBN$或$SR$协议，连续$ARQ$协议一般指$GBN$或$SR$协议。</li>
+</ul>
+<h1 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h1><h2 id="信道划分"><a href="#信道划分" class="headerlink" title="信道划分"></a>信道划分</h2><h3 id="时分复用-TDM"><a href="#时分复用-TDM" class="headerlink" title="时分复用(TDM)"></a>时分复用(TDM)</h3><p>&emsp;&emsp;将时间分为等长的“$TDM$帧”，每个“$TDM$帧”又分为等长的$m$个“时隙”，将$m$个“时隙”分配给$m$对用户（节点）使用。该技术有如下的缺点：</p>
+<ul>
+<li>每个节点<font color="red">最多只能分配到信道总带宽的$\frac{1}{m}$</font>。</li>
+<li>某个节点暂时不发送数据，会导致被分配的时隙闲置，使得<font color="red">信道利用率降低</font>。</li>
+</ul>
+<h3 id="统计时分复用-STDM"><a href="#统计时分复用-STDM" class="headerlink" title="统计时分复用(STDM)"></a>统计时分复用(STDM)</h3><p>&emsp;&emsp;在时分复用的基础上，动态按序分配时隙，某个时隙的用户不需要传输数据，则分配给其他需要传输数据的用户，</p>
+<h3 id="频分复用-FDM"><a href="#频分复用-FDM" class="headerlink" title="频分复用(FDM)"></a>频分复用(FDM)</h3><p>&emsp;&emsp;将信道的总频带划分为多个子频带，每个子频带作为一个子信道，每对用户使用一个子信道进行通信。</p>
+<ul>
+<li>复用器：将各节点发出的信号“复合”后传输到共享信道上。</li>
+<li>分用器：将各个子频带信号“分离”出来。</li>
+</ul>
+<p>&emsp;&emsp;该技术能够让多个节点同时发送信号，充分利用信道带宽；但是只能用于<font color="red">模拟信号</font>的传输。</p>
+<h3 id="波分复用-WDM"><a href="#波分复用-WDM" class="headerlink" title="波分复用(WDM)"></a>波分复用(WDM)</h3><p>&emsp;&emsp;将光信号进行频分复用，使用不同波长的光信号作为子信道。</p>
+<h3 id="码分复用-CDM"><a href="#码分复用-CDM" class="headerlink" title="码分复用(CDM)"></a>码分复用(CDM)</h3><ol>
+<li><p>给各节点分配专属“码片序列”。码片序列包含$m$个码片（信号值），可看做<font color="red">$m$维向量（分量通常取$-1$或$1$）</font>。</p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/20.png" alt></p>
+<ul>
+<li>要求各节点的$m$维向量必须<font color="red">相互正交</font>，这样在收到不同节点的叠加信号时可以进行分离。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/21.png" alt></p>
+</li>
+<li><p>节点发送$m$个信号值与码片序列相同，表示比特$1$；相反则为比特$0$。</p>
+</li>
+<li>当多个发送方同时发送数据时，信号在传输过程中叠加，本质为多个$m$维向量的加法。</li>
+<li>接收方收到的是<strong>叠加信号</strong>，需要从中分离出各发送方的数据。叠加信号与发送方码片序列计算<strong>“规格化内积”</strong>，得出对应发送方发送的信号。</li>
+</ol>
+<h2 id="随机访问"><a href="#随机访问" class="headerlink" title="随机访问"></a>随机访问</h2><h3 id="ALOHA协议"><a href="#ALOHA协议" class="headerlink" title="ALOHA协议"></a>ALOHA协议</h3><ul>
+<li>纯$ALOHA$协议：类似停止等待协议。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/22.png" alt></p>
+<ul>
+<li>时隙$ALOHA$协议：避免了用户发送数据的随意性，降低了冲突概率，提高了信道利用率。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/23.png" alt></p>
+<h3 id="载波监听多路访问协议-CSMA"><a href="#载波监听多路访问协议-CSMA" class="headerlink" title="载波监听多路访问协议(CSMA)"></a>载波监听多路访问协议(CSMA)</h3><p>&emsp;&emsp;在$ALOHA$协议的基础上进行改进，发送数据之前先监听信道是否空闲，只有信道空闲时才会尝试发送。</p>
+<ul>
+<li>$1-$坚持$CSMA$协议：信道利用率高；多个节点都准备好数据并且信道空闲时，会同时发送数据，导致冲突概率变大。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/24.png" alt></p>
+<ul>
+<li>非坚持$CSMA$协议：随机推迟一段时间再尝试监听，降低冲突概率；信道刚恢复空闲时，可能不会立即被使用。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/25.png" alt></p>
+<ul>
+<li>$p-$坚持$CSMA$协议：</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/26.png" alt></p>
+<h3 id="CSMA-CD协议（冲突检测）"><a href="#CSMA-CD协议（冲突检测）" class="headerlink" title="CSMA/CD协议（冲突检测）"></a>CSMA/CD协议（冲突检测）</h3><p>&emsp;&emsp;先听后发，边听边发，<font color="red">冲突停发</font>，<font color="royalblue">随机重发</font>。</p>
+<ul>
+<li>争用期：<font color="red">最大单向传播时延（距离最远的两个节点）</font>的两倍。如果争用期内没检测到冲突，本次帧发送就不再可能发送冲突。</li>
+<li>最短帧长：$2 \times$最大单向传播时延$\times$信道带宽，若收到的帧小于最短帧长，则视为无效。<ul>
+<li>小于最短帧长时，会导致节点误认为发送过程中没有发送冲突，但实际上已经发生了冲突。</li>
+<li>如果实际要发送的数据很少，可填充至合法长度后再发送。</li>
+</ul>
+</li>
+<li>最长帧长：规定最长帧长防止某些节点一直占用信道。以太网规定最短帧长为$64B$，最长帧长为$1518B$。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/27.png" alt></p>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/28.png" alt></p>
+<h3 id="CSMA-CA协议（冲突避免）"><a href="#CSMA-CA协议（冲突避免）" class="headerlink" title="CSMA/CA协议（冲突避免）"></a>CSMA/CA协议（冲突避免）</h3><p>&emsp;&emsp;适用于无线网络，例如$IEEE802.11$标准的无线局域网$(WiFi)$。</p>
+<ul>
+<li>$AP$：接入点，也就是连接的无线$WiFi$热点。</li>
+<li><strong>硬件上难以实现“边听边发，冲突检测”</strong>：接收信号的强度往往远小于发送信号的强度，且在无线介质上信号强度的动态变化范围很大。</li>
+<li><strong>存在“隐蔽站”问题</strong>：在无线通信中，并非所有站点都能够听见对方，发送节点处没有冲突并不意味着接收节点处就没有冲突。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/29.png" alt></p>
+<ul>
+<li><p>帧间间隔$(IFS)$：</p>
+<ul>
+<li>分布式协调$IFS(DIFS)$：最长的帧间间隔。</li>
+<li>短$IFS(SIFS)$：最短的帧间间隔。预留$SIFS$用于处理收到的帧。</li>
+</ul>
+</li>
+<li><p>发送方先听后发，忙则退避。</p>
+<ul>
+<li>若信道空闲，<font color="Magenta">间隔$DIFS$</font>后，再发送帧，<font color="orangered">一口气发完，发送过程中不检测冲突</font>。</li>
+<li>若信道不空闲，则进行<font color="Mulberry">“随机退避”</font>。</li>
+<li>随机退避：用二进制指数退避算法确定一段随机退避时间（倒计时），发送方持续监听空闲信道，<font color="orangered">当信道空闲时扣除倒计时</font>，不空闲时暂停倒计时。倒计时结束则立即发送数据帧。</li>
+</ul>
+</li>
+<li>接收方使用停止等待协议，每收到一个正确数据帧都返回$ACK$，若<font color="red">发送方</font>超时未收到$ACK$，则进行<font color="Mulberry">“随机退避”</font>。</li>
+<li>使用信道预约机制解决”隐藏站“问题，步骤如下：<ol>
+<li>发送方发送$RTS$控制帧.。<ul>
+<li>$RTS$控制帧（请求发送）：包括源地址、目的地址和这次通信所需的持续时间。</li>
+</ul>
+</li>
+<li>$AP$广播$CTS$控制帧。<ul>
+<li>$CTS$控制帧（允许发送）：和$RTS$控制帧内容相同。</li>
+</ul>
+</li>
+<li>其他无关节点收到$CTS$控制帧后自觉“禁言”一段时间，发送方收到$CTS$控制帧后可以发送数据。<ul>
+<li>如果超时未收到$CTS$控制帧，则说明预约失败，随机退避后再次预约。</li>
+</ul>
+</li>
+<li>$AP$收到数据帧后，进行$CRC$校验，若无差错就返回$ACK$帧。</li>
+</ol>
+</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/30.png" alt></p>
+<h2 id="轮询访问"><a href="#轮询访问" class="headerlink" title="轮询访问"></a>轮询访问</h2><p>&emsp;&emsp;主要采用令牌环网技术。该技术使用环形拓扑结构，各节点“轮询访问”信道，不会发生信道冲突，效率高，因此适用于<font color="Mulberry">负载高</font>的网络。通过<font color="orangered">令牌传递协议</font>实现介质访问控制。</p>
+<ul>
+<li>令牌帧：只有获得令牌的节点才能往信道上发送数据帧，传递一次数据帧就需要<strong>释放令牌</strong>。如果当前节点没有数据帧需要传递，则将令牌<strong>传递</strong>给下一个节点。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/31.png" alt></p>
+<ul>
+<li>数据帧：包含源地址、目的地址、令牌号等信息。目的节点收到后会复制数据，并将$FS$标记为$true$，说明已接收。数据帧回到源节点后，如果发现异常状况，就尝试重发；若无异常，就将令牌传递下一个节点。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/32.png" alt></p>
+<ul>
+<li>令牌环网的集中控制站$(MAU)$：用于集中控制令牌环网。</li>
+</ul>
+<h1 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h1><h2 id="IEEE802"><a href="#IEEE802" class="headerlink" title="IEEE802"></a>IEEE802</h2><ul>
+<li>$IEEE$：电气电子工程师学会。</li>
+<li>$IEEE802$委员会：致力于研究局域网和城域网的物理层和$MAC$层中定义的服务和协议，对应$OSI$网络参考模型的最低两层。层次划分为：<ul>
+<li>物理层：某个具体局域网技术的研究范畴</li>
+<li>介质访问控制子层：研究与访问传输介质有关的部分功能（如：组帧、差错控制、透明传输、介质访问控制等）。</li>
+</ul>
+</li>
+<li>常见的工作组：<ul>
+<li>$802.3$：以太网技术。</li>
+<li>$802.5$：令牌环网技术，已被解散。</li>
+<li>$802.11$：$WiFi$技术。</li>
+<li>$802.1Q$：$VLAN$技术。</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Mi-Da-Da.github.io">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Mi-Da-Da.github.io" target="_blank">米大大的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">计算机网络 数据链路层</a></div><div class="post-share"><div class="social-share" data-image="/img/small094121jUdYg1738892481.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%89%A9%E7%90%86%E5%B1%82/" title="考研之计算机网络——物理层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">考研之计算机网络——物理层</div></div><div class="info-2"><div class="info-item-1">物理层通信基础基本概念 信源：数据发送方。 信宿：数据接收方。 数据：信息的实体。 信号：数据的载体。 数字信号：信号值是离散的。 模拟信号：信号值是连接的。   码元：每个信号就是一个码元，信号周期可以称为“码元宽度”。如果一个周期内可能有$k$种信号，则$1$码元$=log_2k{\ }bit$。 速率： 波特率：每秒传输码元的数量，码元/秒（波特$Baud$）。 比特率：每秒传输比特的数量，$bit/s$。 若一个码元携带$n$比特信息，则$M{\ }Baud=Mn{\...</div></div></div></a><a class="pagination-related  no-desc" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/" title="考研之计算机网络——网络层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">考研之计算机网络——网络层</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Tom</div><div class="author-info-description">记录生活的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mi-Da-Da"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.</span> <span class="toc-text">功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E5%B8%A7"><span class="toc-number">3.</span> <span class="toc-text">组帧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">字符计数法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E5%A1%AB%E5%85%85%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">字节填充法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">零比特填充法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">违规编码法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">差错控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="toc-number">4.1.</span> <span class="toc-text">奇偶校验码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC"><span class="toc-number">4.2.</span> <span class="toc-text">循环冗余校验码(CRC)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E6%98%8E%EF%BC%88%E6%B5%B7%E6%98%8E%EF%BC%89%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="toc-number">4.3.</span> <span class="toc-text">汉明（海明）校验码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="toc-number">5.</span> <span class="toc-text">流量控制与可靠传输</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">5.1.</span> <span class="toc-text">相关机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%BA%E5%88%B6"><span class="toc-number">5.1.1.</span> <span class="toc-text">滑动窗口机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6"><span class="toc-number">5.1.2.</span> <span class="toc-text">确认机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">5.1.3.</span> <span class="toc-text">重传机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A7%E7%BC%96%E5%8F%B7"><span class="toc-number">5.1.4.</span> <span class="toc-text">帧编号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE-S-W"><span class="toc-number">5.2.</span> <span class="toc-text">停止等待协议(S-W)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">5.2.1.</span> <span class="toc-text">实现流量控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="toc-number">5.2.2.</span> <span class="toc-text">实现可靠传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E9%80%80N%E5%B8%A7%E5%8D%8F%E8%AE%AE-GBN"><span class="toc-number">5.3.</span> <span class="toc-text">后退N帧协议(GBN)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93-1"><span class="toc-number">5.3.1.</span> <span class="toc-text">实现可靠传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE-SR"><span class="toc-number">5.4.</span> <span class="toc-text">选择重传协议(SR)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93-2"><span class="toc-number">5.4.1.</span> <span class="toc-text">实现可靠传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87%E5%88%86%E6%9E%90"><span class="toc-number">5.5.</span> <span class="toc-text">信道利用率分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">6.</span> <span class="toc-text">介质访问控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86"><span class="toc-number">6.1.</span> <span class="toc-text">信道划分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8-TDM"><span class="toc-number">6.1.1.</span> <span class="toc-text">时分复用(TDM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8-STDM"><span class="toc-number">6.1.2.</span> <span class="toc-text">统计时分复用(STDM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8-FDM"><span class="toc-number">6.1.3.</span> <span class="toc-text">频分复用(FDM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A2%E5%88%86%E5%A4%8D%E7%94%A8-WDM"><span class="toc-number">6.1.4.</span> <span class="toc-text">波分复用(WDM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%81%E5%88%86%E5%A4%8D%E7%94%A8-CDM"><span class="toc-number">6.1.5.</span> <span class="toc-text">码分复用(CDM)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="toc-number">6.2.</span> <span class="toc-text">随机访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ALOHA%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.2.1.</span> <span class="toc-text">ALOHA协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE-CSMA"><span class="toc-number">6.2.2.</span> <span class="toc-text">载波监听多路访问协议(CSMA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSMA-CD%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%86%B2%E7%AA%81%E6%A3%80%E6%B5%8B%EF%BC%89"><span class="toc-number">6.2.3.</span> <span class="toc-text">CSMA&#x2F;CD协议（冲突检测）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSMA-CA%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%86%B2%E7%AA%81%E9%81%BF%E5%85%8D%EF%BC%89"><span class="toc-number">6.2.4.</span> <span class="toc-text">CSMA&#x2F;CA协议（冲突避免）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2%E8%AE%BF%E9%97%AE"><span class="toc-number">6.3.</span> <span class="toc-text">轮询访问</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">7.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IEEE802"><span class="toc-number">7.1.</span> <span class="toc-text">IEEE802</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/" title="无标题">无标题</a><time datetime="2026-05-06T09:53:43.939Z" title="发表于 2026-05-06 17:53:43">2026-05-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" title="考研之计算机网络——应用层">考研之计算机网络——应用层</a><time datetime="2026-04-21T10:02:58.000Z" title="发表于 2026-04-21 18:02:58">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" title="考研之计算机网络——传输层">考研之计算机网络——传输层</a><time datetime="2026-04-21T10:02:51.000Z" title="发表于 2026-04-21 18:02:51">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/" title="考研之计算机网络——网络层">考研之计算机网络——网络层</a><time datetime="2026-04-21T10:02:24.000Z" title="发表于 2026-04-21 18:02:24">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="考研之计算机网络——数据链路层">考研之计算机网络——数据链路层</a><time datetime="2026-04-21T10:02:06.000Z" title="发表于 2026-04-21 18:02:06">2026-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

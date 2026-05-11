@@ -1,0 +1,996 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>米大大的Blog | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="title： NISP一级考试笔记date： 2026-05-06 17：53：43tags：    NISP一级 categories： NISPNISP一级考试笔记信息安全概述信息与信息安全信息 信息：有意义的数据，它具有一定价值，是一种需要适当保护的资产。  数据：反映客观事物属性的记录，是信息的具体表现形式。  数据经过加工处理之后，就成为信息;而信息需要经过数字化处理转变成数据才能存储">
+<meta property="og:type" content="article">
+<meta property="og:title" content="米大大的Blog">
+<meta property="og:url" content="http://mi-da-da.github.io/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="米大大的Blog">
+<meta property="og:description" content="title： NISP一级考试笔记date： 2026-05-06 17：53：43tags：    NISP一级 categories： NISPNISP一级考试笔记信息安全概述信息与信息安全信息 信息：有意义的数据，它具有一定价值，是一种需要适当保护的资产。  数据：反映客观事物属性的记录，是信息的具体表现形式。  数据经过加工处理之后，就成为信息;而信息需要经过数字化处理转变成数据才能存储">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg">
+<meta property="article:published_time" content="2026-05-06T09:53:43.939Z">
+<meta property="article:modified_time" content="2026-05-06T18:03:37.952Z">
+<meta property="article:author" content="Tom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "http://mi-da-da.github.io/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/",
+  "image": "http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg",
+  "datePublished": "2026-05-06T09:53:43.939Z",
+  "dateModified": "2026-05-06T18:03:37.952Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Tom",
+      "url": "http://mi-da-da.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/20191009090430_tcbij.jpg"><link rel="canonical" href="http://mi-da-da.github.io/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '米大大的Blog',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">米大大的Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-06T09:53:43.939Z" title="发表于 2026-05-06 17:53:43">2026-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-06T18:03:37.952Z" title="更新于 2026-05-07 02:03:37">2026-05-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">12.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>37分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><hr>
+<p>title： NISP一级考试笔记<br>date： 2026-05-06 17：53：43<br>tags：<br>    NISP一级</p>
+<h2 id="categories：-NISP"><a href="#categories：-NISP" class="headerlink" title="categories： NISP"></a>categories： NISP</h2><h1 id="NISP一级考试笔记"><a href="#NISP一级考试笔记" class="headerlink" title="NISP一级考试笔记"></a><center>NISP一级考试笔记</center></h1><h1 id="信息安全概述"><a href="#信息安全概述" class="headerlink" title="信息安全概述"></a>信息安全概述</h1><h2 id="信息与信息安全"><a href="#信息与信息安全" class="headerlink" title="信息与信息安全"></a>信息与信息安全</h2><h3 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h3><ul>
+<li><p>信息：有意义的数据，它具有一定价值，是一种需要适当保护的资产。</p>
+</li>
+<li><p>数据：反映客观事物属性的记录，是信息的具体表现形式。</p>
+</li>
+<li><p>数据经过加工处理之后，就成为信息;而信息需要经过数字化处理转变成数据才能存储和传输。</p>
+</li>
+<li><p>信息技术：用于管理和处理信息所采用的各种技术的总称，包括生产和应用两方面。</p>
+</li>
+<li><p>信息技术的发展主要有下面四个阶段：</p>
+<ol>
+<li><p>电讯技术的发明</p>
+<ul>
+<li><p>电报和电话的发明，使人类实现了远距离实时通信。</p>
+</li>
+<li><p>无线电广播技术，使人类更新了获取信息的媒介。</p>
+</li>
+</ul>
+</li>
+<li><p>计算机技术的发展</p>
+<ul>
+<li>图灵的图灵机，设计出了计算机的理论架构。</li>
+<li>香农发表的文章，奠定了计算机世界的二进制主基础。</li>
+<li>冯诺依曼提出的计算机组成架构，一直被沿用至今。</li>
+<li>第一代电子管向第二代晶体管的技术迈进，再向大规模集成电路的迭代，深刻推动了计算机从军用、科研再到民用的进程，使计算机技术得以普及和发展。</li>
+</ul>
+</li>
+<li><p>互联网的使用</p>
+<ul>
+<li>美国军用网络$ARPANET$的诞生，使分散的计算机可以互联互通。为后来的$Internet$奠定了基础。</li>
+</ul>
+</li>
+<li><p>网络社会</p>
+<ul>
+<li>网络已经彻底融入人类社会，并且影响和改变了人类的生活形式。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="信息安全"><a href="#信息安全" class="headerlink" title="信息安全"></a>信息安全</h3><p>&emsp;&emsp;信息系统（包括硬件、软件、数据、人、物理环境及其基础设施）受到保护，不受偶然的或者恶意原因的影响而遭到破坏、更改、泄露，系统连续可靠正常地运行，信息服务不中断，最终实现业务连续性。</p>
+<ul>
+<li>根本目的：使信息不受内部、外部、自然等因素的威胁。</li>
+<li><font color="red">基本属性$CIA$模型</font><ul>
+<li><strong>机密性$(Confidentiality)$</strong>：信息加密。</li>
+<li><strong>完整性$(Integrity)$</strong>：不被篡改。</li>
+<li><strong>可用性$(Availability)$</strong>：信息可用</li>
+</ul>
+</li>
+<li>扩展属性<ul>
+<li>真实性$(Authenticity)$：真实有效。</li>
+<li>不可否认性$(Non-repudiation)$：对方不可抵赖。</li>
+<li>可控性$(Controllability)$：传播范围可控。</li>
+</ul>
+</li>
+<li>特征<ul>
+<li>相对性：安全都是相对的，没有绝对安全的系统。</li>
+<li>时效性：安全不能一劳永逸。针对新发现漏洞要指定新方案。</li>
+<li>相关性：系统中引入新组件可能影响其它部分。</li>
+<li>不确定性：针对恶意攻击，时间地点人物都是不确定的，需考虑潜在风险。</li>
+<li>复杂性：涉及安全管理、教育、培训、立法和国际合作等领域。</li>
+</ul>
+</li>
+<li>与传统安全相比，信息安全有下面四个特征：<ul>
+<li>系统性：系统地从技术、管理、工程和标准法规等各层面综合保障的信息安全。</li>
+<li>动态性：对信息安全不能抱有一劳永逸的思想，应该根据风险的变化，在信息系统的整个生命周期中采取相应的安全措施来控制风险。</li>
+<li>无边界性：信息系统安全威胁超越了现实地域和现实行业的限制。</li>
+<li>非传统性：与军事安全、政治安全等传统安全相比，信息安全涉及的领域和影响范围十分广泛。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;信息系统安全包含<strong>数据安全、设备安全、内容安全、行为安全</strong>。</p>
+<h2 id="信息安全威胁"><a href="#信息安全威胁" class="headerlink" title="信息安全威胁"></a>信息安全威胁</h2><h3 id="我国面临的信息安全威胁"><a href="#我国面临的信息安全威胁" class="headerlink" title="我国面临的信息安全威胁"></a>我国面临的信息安全威胁</h3><ul>
+<li>国家威胁：恐怖组织、邪教组织、西方文化侵略和其它国家对我国的情报搜集。</li>
+<li>组织威胁：网络恐怖分子或者商业间谍可能对企业或者组织的机密信息、财产和秩序等造成威胁。</li>
+<li>个人威胁：个人知识产权、财产、重要信息等有可能受到恶意侵犯。</li>
+</ul>
+<h3 id="信息安全问题产生的根源"><a href="#信息安全问题产生的根源" class="headerlink" title="信息安全问题产生的根源"></a>信息安全问题产生的根源</h3><ul>
+<li>内因：<ul>
+<li><font color="royalblue">信息系统的复杂性</font>，会造成其系统本身的安全缺陷。</li>
+<li>信息系统管理人员的<font color="royalblue">人性弱点</font>或者<font color="royalblue">不合理操作</font>等导致。</li>
+</ul>
+</li>
+<li>外因<ul>
+<li>人为威胁：人为的的恶意攻击或非法入侵。</li>
+<li>环境威胁：由于自然灾害、战争等不可抗因素导致的外来侵害。</li>
+</ul>
+</li>
+</ul>
+<h2 id="信息安全发展阶段与形势"><a href="#信息安全发展阶段与形势" class="headerlink" title="信息安全发展阶段与形势"></a>信息安全发展阶段与形势</h2><h3 id="信息安全发展阶段"><a href="#信息安全发展阶段" class="headerlink" title="信息安全发展阶段"></a>信息安全发展阶段</h3><p>&emsp;&emsp;信息安全的发展有如下四个阶段：</p>
+<ol>
+<li>通信安全阶段：防窃听和密码数据加密。<ul>
+<li>核心思想：通过密码技术解决通信保密，确保数据的保密性和完整性。主要关注传输中的数据保护。</li>
+<li>安全威胁：搭线窃听、密码学分析。</li>
+<li>安全措施：加密。</li>
+</ul>
+</li>
+<li>计算机安全阶段：密码学算法和信息系统安全模型成为研究课题，达到新的高度。<ul>
+<li>核心思想：确保信息系统的保密性、完整性和可用性。</li>
+<li>安全威胁：非法访问、恶意代码、脆弱口令等。</li>
+<li>安全措施：安全操作系统设计技术$(TCB)$。</li>
+</ul>
+</li>
+<li>信息系统安全阶段：使用防火墙、防病毒、公钥基础设施和虚拟专用网络等技术抵御安全威胁。<ul>
+<li>核心思想：确保信息在存储、处理和传输过程中免受偶然或恶意的泄密、非法访问或破坏。</li>
+<li>安全威胁：网络入侵、病毒破坏、信息对抗等。</li>
+<li>安全措施：防火墙、防病毒、漏洞扫描、入侵检测、$PKI$、$VPN$等。</li>
+</ul>
+</li>
+<li>信息保障阶段：通过技术、管理和工程等措施对信息系统进行综合保障。<ul>
+<li>核心思想：动态安全，保障信息系统的业务正常、稳定的运行；综合技术、管理、过程、人员。</li>
+<li>安全威胁：黑客、恐怖分子、信息战、自然灾难、电力中断等。</li>
+<li>安全措施：技术安全保障体系、安全管理体系、人员意识/培训/教育。</li>
+</ul>
+</li>
+</ol>
+<h3 id="我国信息安全形势"><a href="#我国信息安全形势" class="headerlink" title="我国信息安全形势"></a>我国信息安全形势</h3><ul>
+<li>针对网络信息的破坏活动日益严重，利用网络进行违法犯罪案件逐年上升。</li>
+<li>安全漏洞和安全隐患增多，对信息安全构成严重威胁。</li>
+<li>黑客进攻、恶意代码对重要信息系统安全造成严重影响。</li>
+</ul>
+<h2 id="信息安全保障"><a href="#信息安全保障" class="headerlink" title="信息安全保障"></a>信息安全保障</h2><ul>
+<li>信息安全保障：采用技术、管理甚至工程等综合手段，保护信息和信息系统，使其能够安全运行的防护性行为。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/1.png" alt></p>
+<ul>
+<li>信息安全保障模型有如下几种：<ul>
+<li><font color="red">$PDCA$模型$(Plan{\ }Do{\ }Check{\ }Act)$</font>：计划一执行一检查一改进。</li>
+<li><font color="red">$PDR$模型$(Protection{\ }Detection{\ }Response)$</font>：防护一检测一响应。</li>
+<li><font color="red">$P2DR/PPDR$模型$(Policy{\ }Protection{\ }Detection{\ }Response)$</font>：策略一防护一检测一响应。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/2.png" alt></p>
+<ul>
+<li>信息安全保障作用<ul>
+<li>对个人而言：加强信息安全保障是维护企业与公民合法权益的重要前提和根本保证。</li>
+<li>对国家而言：在实施国家信息化发展战略中，要高度重视信息安全保障体系建设，实现信息化与信息安全协调发展。</li>
+</ul>
+</li>
+</ul>
+<h2 id="信息系统安全保障"><a href="#信息系统安全保障" class="headerlink" title="信息系统安全保障"></a>信息系统安全保障</h2><ul>
+<li>信息系统：具有集成性的系统，每一个组织中信息流动的综合构成一个信息系统。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/3.png" alt></p>
+<ul>
+<li>信息系统安全保障：信息系统安全保障是与信息系统的规划、设计、实现和运行、使用等生命周期密切相关的。这些活动包括覆盖系统全生命周期的管理活动，系统从无到有的工程活动，系统从概念到设计的架构活动。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/4.png" alt></p>
+<ul>
+<li>信息系统安全保障的模型：国家标准《信息系统安全保障评估框架第一部分：简介和一般模型》$(GB/T{\ }20274.1-2006)$，描述了信息系统安全保障模型，该模型包含保障要素，生命周期和安全特征三个方面。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/5.png" alt></p>
+<h1 id="信息安全基础技术"><a href="#信息安全基础技术" class="headerlink" title="信息安全基础技术"></a>信息安全基础技术</h1><h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><ul>
+<li>古典密码学：保持算法本身的保密性。<ul>
+<li>不适合大规模生产、不适合较大的或者人员变动较大的组织、用户无法了解算法的安全性。</li>
+</ul>
+</li>
+<li>近代密码学：用机电代替手工，机械密码/机电密码。</li>
+</ul>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><p>&emsp;&emsp;信息在传播的过程中有可能被截获。为了避免截获，必须加密。有加密，就必须有解密。</p>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/6.png" alt></p>
+<ul>
+<li>明文：未加密的原始信息。</li>
+<li>密文：加密后的信息。</li>
+<li>明文被加密变成密文，密文解密后变成明文。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/7.png" alt></p>
+<ul>
+<li>对称加密算法：具有单一秘钥，例如$AES$、$DES$等，密钥一般采用$128$、$192$、$256$比特。<ul>
+<li>优点：<ul>
+<li>效率高。</li>
+<li>算法简单。</li>
+<li>系统开销小。</li>
+<li>适合加密大量数据。</li>
+<li>明文长度与密文长度相等。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>需要以安全方式进行密钥交换。</li>
+<li>秘钥管理复杂。</li>
+<li>无法解决消息的篡改、否认问题。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/8.png" alt></p>
+<ul>
+<li>非对称加密算法：具有公钥和私钥，例如$RSA$、$ECC$等，密钥长度$512$~$2048$位。<ul>
+<li>优点：<ul>
+<li>秘钥分发数目与参与者数目相同，便于秘钥管理。</li>
+<li>安全。</li>
+<li>支持数字签名和不可否认性。</li>
+<li>无需事先建立关系交换密钥。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>速度相对较慢。</li>
+<li>加密后密文变长。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/9.png" alt></p>
+<ul>
+<li>混合加密：将对称加密算法和非对称加密算法结合，使用<font color="Mulberry">对称加密算法加密信息，非对称加密算法加密对称密钥</font>。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/10.png" alt></p>
+<h3 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h3><p>&emsp;&emsp;哈希函数又称哈希算法，是用来确定信息完整性的工具。常见的有$MD5$和$SHA$。</p>
+<ul>
+<li>$MD5$：输入任意长度的消息，输出$128$位摘要，以$512$位输入数据块为单位处理。</li>
+<li>$SHA$：输入最大长度为$264$位的消息，输出$160$位消息摘要，以$512$位输入数据块为单位处理。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/11.png" alt></p>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/12.png" alt></p>
+<p>&emsp;&emsp;数字签名的工作原理如下：</p>
+<ol>
+<li>将明文进行哈希处理，生成对应哈希值。</li>
+<li>用私钥加密哈希值。</li>
+<li>将明文与加密后的哈希值一起发送给通信的另一方。</li>
+<li>另一方使用公钥解密并获取哈希值。</li>
+<li>将明文进行哈希处理并将生成的哈希值与解密得到的进行对比。</li>
+<li>如果二者匹配，则说明消息完整。</li>
+</ol>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/13.png" alt></p>
+<p>&emsp;&emsp;数字签名和传统签名的对比：</p>
+<ul>
+<li>传统签名的基本特点：<ul>
+<li>与被签的文件在物理上不可分割。</li>
+<li>签名者不能否认自己的签名。</li>
+<li>签名不能被伪造。</li>
+<li>容易被验证。</li>
+</ul>
+</li>
+<li>数字签名是传统签名的数字化，基本要求：<ul>
+<li>能与所签文件“绑定”。</li>
+<li>其他与传统签名相同。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;数字签名的应用：</p>
+<ul>
+<li>可信性：签名让文件的接收者相信签名者是慎重地在文件上签名的。</li>
+<li>不可重用性：签名不可重用，即使同一消息在不同时刻的签名也是有区别的。如果将签名部分提取出来，附加在别的消息后面，验证签名会失败。这是因为签名和所签名消息之间是一一对应的，消息不同签名内容也不同，因此签名无法重复使用。</li>
+<li>数据完整性：在文件签名后，文件不能改变。</li>
+<li>不可伪造性：签名能够证明是签名者而不是其他人在文件上签名，任何人都不能伪造签名。</li>
+<li>不可否认性：在签名者否认自己的签名时，签名接收者可以请求可信第二方进行仲裁。</li>
+</ul>
+<h2 id="数字证书与公钥基础设施"><a href="#数字证书与公钥基础设施" class="headerlink" title="数字证书与公钥基础设施"></a>数字证书与公钥基础设施</h2><ul>
+<li>数字证书：由第三方可信机构（一般是证书服务器）颁发的数字证书，可以证明身份的可信度。</li>
+<li>公钥基础设施$(PKI,Public{\ }Key{\ }Infrastructure)$：是一种遵循既定标准的公钥管理平台。它能够为所有网络应用提供加密和数字签名等密码服务所必须的秘钥和证书管理体系。</li>
+<li>认证权威机构$(CA,Certification{\ }Authority)$：它可以由国际性组织、政府、企业和个人等设立。主要功能有：<ol>
+<li>证书的签发和管理。</li>
+<li>证书黑名单$(CRL)$管理。</li>
+<li>$RA$（用户注册系统）的设立、审查和管理。</li>
+</ol>
+</li>
+</ul>
+<h2 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h2><p>&emsp;&emsp;身份认证的基本方法有如下三种：</p>
+<ol>
+<li>用户所知道的，例如口令、秘钥等。</li>
+<li>用户所拥有的，例如印章、$USB{\ }key$等。</li>
+<li>用户所具有的生物特性，例如指纹、声音、虹膜和人脸等。</li>
+</ol>
+<ul>
+<li>静态口令认证：口令固定不变，长期有效。该种方式鉴别能力较弱，有如下攻击方式：<ul>
+<li>通信窃取：窃听获得明文的用户名和口令。</li>
+<li>字典攻击：选择有意义的单词或数字作字典。</li>
+<li>暴力攻击：穷举全部可能组合猜测口令。</li>
+<li>外部泄漏：搜索存有口令的纸片或文件。</li>
+<li>窥探：安装监视器或从背后窥探。</li>
+<li>社交工程：冒充合法用户、假冒管理员，骗取口令。</li>
+</ul>
+</li>
+<li>短信口令认证：利用移动网络动态口令的认证方式。$6$位验证码。</li>
+<li>动态口令认证$(OTP)$：每次变化，无需人工干预，随机性强。</li>
+<li>$USB{\ }Key$：它采用软硬件相结合的挑战/应答认证模式。$USB{\ }Key$是一种$USB$接口的硬件设备，它内置单片机或智能卡芯片，可以存储用户的密钥或数字证书，利用$USB{\ }Key$内置的密码算法实现对用户身份的认证。挑战/应答认证模式，即认证系统发送一个随机数，用户使用$USB{\ }Key$中的密钥和算法计算出一个数值(应答)，认证系统对该数值进行检验，若正确则认为是合法用户。</li>
+</ul>
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>&emsp;&emsp;访问控制：针对越权使用资源的防御措施。主要包括主体、客体和控制策略三个要素：</p>
+<ol>
+<li><p>主体是指提出访问资源具体请求的实体。</p>
+</li>
+<li><p>客体是指被访问资源的实体。</p>
+</li>
+<li>控制策略是指主体对客体的相关访问规则的集合。访问控制安全策略实施遵循<font color="Mulberry">最小特权原则</font>。</li>
+</ol>
+<p>&emsp;&emsp;访问控制主要有如下三类：</p>
+<ul>
+<li>自主访问控制$(Discretionary Access Control,DAC)$：由资源所有者设定谁可以有哪些权限做些什么事。<ul>
+<li>优点：<ul>
+<li>根据主体的身份和访问权限进行决策。</li>
+<li>具有某种访问能力的主体能够自主地将访问权的某个子集授予其它主体。</li>
+<li>灵活性高，被大量采用。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>信息在传递过程中其访问权限关系会被改变。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>强制访问控制$(Mandatory Access Control,MAC)$：部署该控制的系统可以决定一个主体是否可以访问某个客体。</li>
+<li>基于角色的访问控制$(Role-based Access Control,RBAC)$：基于职能角色来设定访问控制策略。<ul>
+<li>便于授权管理。</li>
+<li>便于处理工作分级，如文件等资源分级管理。</li>
+<li>利用安全约束，容易实现各种安全策略，如最小特权、职责分离等。</li>
+<li>便于任务分担，不同角色完成不同的任务。</li>
+</ul>
+</li>
+</ul>
+<h2 id="安全审计"><a href="#安全审计" class="headerlink" title="安全审计"></a>安全审计</h2><p>&emsp;&emsp;安全审计$(Audit)$：按照一定的安全策略记录历史操作事件，并利用记录进行分析，发现系统漏洞、入侵行为等，并改善系统性能和安全性的一系列过程。安全审计是对访问控制的必要补充，它会对用户使用何种信息资源、使用的时间，以及如何使用进行记录与监控。通过对系统和用户进行充分和适当的审计，能够分析发现安全事件的原因，并提供相应的证据。</p>
+<ul>
+<li>被动式审计：简单地记录一些活动，并不做处理。</li>
+<li>主动式审计：结束一个登录会话、拒绝一些主机的访问、跟踪非法活动的源位置等行为。</li>
+</ul>
+<p>&emsp;&emsp;安全审计的作用主要有如下四个方面：</p>
+<ul>
+<li><p>威胁和警告潜在的攻击者和滥用授权的合法用户。</p>
+</li>
+<li><p>提供有价值的系统使用日志，帮助系统管理员及时发现系统入侵行为和潜在漏洞。</p>
+</li>
+<li>在发生故障后，可以帮助评估故障损失、重建时间和数据恢复。</li>
+<li>对系统控制、安全策略与规程中特定的改变作出评价和反馈，便于修订决策和部署。</li>
+</ul>
+<h1 id="网络安全防护技术"><a href="#网络安全防护技术" class="headerlink" title="网络安全防护技术"></a>网络安全防护技术</h1><h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><p>&emsp;&emsp;因特网$(Internet)$：通过$TCP/IP$协议将遍布在全世界各地的计算机互联，从而形成超级计算机网络。</p>
+<ul>
+<li>协议：一种约定，按照该约定执行。</li>
+<li>网络协议：事先约定或定义的一组通信规则。<ul>
+<li>精确地规定了所交换数据的格式和传输方法。</li>
+<li>不同网络必须遵守统一的协议才能相互通信。</li>
+<li>$TCP/IP$是一组不同层次上的多个协议组合。</li>
+<li>其定义了电子设备如何接入互联网，以及数据如何在他们之间传输。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/14.png" alt></p>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/15.png" alt></p>
+<ul>
+<li>通信地址：在网络中，发送地址为源地址，到达地址为目的地址。<ul>
+<li>通信中，<font color="red">每台计算机必须有一个全球唯一的物理地址</font>，这个地址工作在网络接口层，被称为$MAC$地址$(48bit)$。</li>
+<li>通信中，<font color="red">每台计算机必须有一个逻辑地址</font>，这个地址工作在$IP$层，被称为$IP$地址$(32bit)$。$IP$地址分为$IPv4$和$IPv6$。</li>
+</ul>
+</li>
+<li>封装$(Encapsulation)$：当高层进程要进行数据传输时，会先将数据从高层向低层传送。经过低层时，会分别加上该低层的头部信息置于数据首部。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/16.png" alt></p>
+<ul>
+<li><p>解封装$(Decapsulation)$：封装的逆过程。</p>
+</li>
+<li><p>$IPv4$包头格式</p>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/17.png" alt></p>
+<ul>
+<li>端口：计算机中有一些协议常用端口，这些端口绑定了一些服务且明确表示使用某种服务协议。</li>
+<li>传输控制协议$TCP$<ul>
+<li>提供<font color="Mulberry">面向连接的、可靠的</font>字节流服务。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/18.png" alt></p>
+<ul>
+<li>用户数据报协议$UDP$<ul>
+<li>用户数据报协议：提供<font color="Mulberry">面向事务的简单不可靠</font>信息传送服务，占用资源少，效率高。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/19.png" alt></p>
+<ul>
+<li>万维网$(World{\ }Wide{\ }Web,WWW)$：是因特网上使用最广泛的一种信息服务，是因特网的主要组成部分。用户可以通过客户端程序访问服务器端程序提供的页面。</li>
+<li>超文本传输协议$HTTP$​：用于从$WWW$​服务器传输超文本到本地浏览器的传输协议。<ul>
+<li>可以使浏览器更加高效，使网络传输减少。</li>
+<li>不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示（如文本先于图形）等。</li>
+</ul>
+</li>
+<li>统一资源定位符$(Uniform{\ }Resource{\ }Locator,URL)$：用户在访问网站时，为了获取特定的信息资源，需要给出特定资源的地址。它是用来标识万<br>维网中每个信息资源的地址。<ul>
+<li>$URL$由三部分组成，表示形式为：$http：//主机域名或IP地址[：端口号]/文件路径/文件名$。</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络安全威胁"><a href="#网络安全威胁" class="headerlink" title="网络安全威胁"></a>网络安全威胁</h2><ol>
+<li><p>网络安全威胁主要来自攻击者对网络及信息系统的攻击。</p>
+</li>
+<li><p>攻击者可以通过网络嗅探、网络钓鱼、拒绝服务、远程控制、社会工程学等网络攻击手段，获得目标计算机的控制权，或获取有价值的数据和信息等。</p>
+</li>
+</ol>
+<ul>
+<li>网络嗅探：网络嗅探是通过截获、分析网络中传输的数据而获取有用信息的行为。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/20.png" alt></p>
+<ul>
+<li>网络钓鱼：网络钓鱼是指攻击者利用伪造的网站或欺骗性的电子邮件进行的网络诈骗活动。有如下的常用手段：<ul>
+<li>伪造相似域名的网站。</li>
+<li>显示$IP$地址而非域名。</li>
+<li>超链接欺骗。</li>
+<li>弹出窗口欺骗。</li>
+</ul>
+</li>
+<li>拒绝服务攻击$DoS$<ul>
+<li>拒绝服务攻击$(Denial{\ }of{\ }Services,DoS)$</li>
+<li>分布式拒绝服务攻击$(Distributed{\ }Denial{\ }of{\ }Services,DDoS)$</li>
+<li>同步泛洪攻击$(Synchronizeflooding,SYN flooding)$</li>
+</ul>
+</li>
+<li>远程控制：攻击者通过各种非法手段成功入侵目标主机后，以实现对目标主机的远程控制。</li>
+<li>社会工程学$(Social{\ }Engineering,SE)$：不是一门科学，而是一门综合运用信息收集，语言技巧、心理陷阱等多种手段，完成欺骗目的的方法。社会工程学的概念是由凯文.米特尼克在其著作的《欺骗的艺术》一书中首次提出。</li>
+</ul>
+<h2 id="网络安全防护与实践"><a href="#网络安全防护与实践" class="headerlink" title="网络安全防护与实践"></a>网络安全防护与实践</h2><h3 id="虚拟专用网"><a href="#虚拟专用网" class="headerlink" title="虚拟专用网"></a>虚拟专用网</h3><p>&emsp;&emsp;虚拟专用网络$(Virtual{\ }Private{\ }Network,VPN)$：是在公用网络上建立专用网络的技术。具有以下特点：</p>
+<ul>
+<li>成本低。</li>
+<li>安全性高。</li>
+<li>服务质量保证。</li>
+<li>可管理性。</li>
+<li>可扩展性。</li>
+</ul>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/21.png" alt></p>
+<p>&emsp;&emsp;$VPN$常用协议有$IPSec$协议和安全套接层协议$SSL$。其应用有如下几种：</p>
+<ul>
+<li>远程访问$VPN$：适用于企业内部人员流动频繁或远程办公的情况。</li>
+<li>内联网$VPN$：适用于相同企业内部异地互联的情况。</li>
+<li>外联网$VPN$：适用于不同企业之间互联的情况。</li>
+</ul>
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>&emsp;&emsp;设置在不同网络之间的一系列包括软硬件在内的部件组合。它在<font color="Mulberry">内网和外网之间构建一道保护屏障</font>，网络内部和外部之间的所有<font color="Mulberry">数据流</font>必须经过防火墙，只有符合安全标准的数据流才能通过防火墙。</p>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/22.png" alt></p>
+<p>&emsp;&emsp;防火墙有如下的功能：</p>
+<ul>
+<li>数据包过滤。</li>
+<li>审计和报警机制。</li>
+<li>远程管理。</li>
+<li>网络地址转换。</li>
+<li>代理。</li>
+<li>流量控制、统计分析和流量计费</li>
+</ul>
+<h2 id="无线局域网安全防护"><a href="#无线局域网安全防护" class="headerlink" title="无线局域网安全防护"></a>无线局域网安全防护</h2><p>&emsp;&emsp;无线局域网$(Wireless{\ }Local{}\ Area{\ }Networks,WLAN)$：非常便捷的<br>以无线方式连接网络设备，相对于有线局域网它具有许多优点，如人们可以随时随地的访问网络资源。</p>
+<p>&emsp;&emsp;增强无线网络安全性的措施：</p>
+<ul>
+<li>修改$admin$密码。</li>
+<li>使用无线网络安全协议。</li>
+<li>禁用$DHCP$服务。</li>
+<li>禁止$SSID$广播。</li>
+<li>禁止远程管理。</li>
+<li>$MAC$地址过滤。</li>
+<li>合理放置无线$AP$。</li>
+</ul>
+<h1 id="操作系统安全防护技术"><a href="#操作系统安全防护技术" class="headerlink" title="操作系统安全防护技术"></a>操作系统安全防护技术</h1><p>&emsp;&emsp;操作系统是计算机系统软硬件资源的控制中心，管理各类资源并为用户提供良好的界面。具有以下特征：</p>
+<ul>
+<li>并发</li>
+<li>共享</li>
+<li>虚拟</li>
+<li>异步</li>
+</ul>
+<p>&emsp;&emsp;操作系统的主要功能有如下几种：</p>
+<ul>
+<li>$CPU$管理。</li>
+<li>存储管理。</li>
+<li>设备管理。</li>
+<li>文件管理。</li>
+<li>网络与通信管理。</li>
+<li>用户接口。</li>
+</ul>
+<h2 id="操作系统的安全威胁"><a href="#操作系统的安全威胁" class="headerlink" title="操作系统的安全威胁"></a>操作系统的安全威胁</h2><h3 id="漏洞和漏洞扫描"><a href="#漏洞和漏洞扫描" class="headerlink" title="漏洞和漏洞扫描"></a>漏洞和漏洞扫描</h3><p>&emsp;&emsp;系统漏洞：也可以称为系统脆弱性，<br>是指计算机系统在硬件、软件、协议的设<br>计、具体实现以及系统安全策略上存在的<br>缺陷和不足。漏洞具有如下的特性：</p>
+<ul>
+<li>事件局限性。</li>
+<li>广泛性。</li>
+<li>隐蔽性。</li>
+<li>被发现性。</li>
+</ul>
+<p>&emsp;&emsp;漏洞产生的原因：</p>
+<ul>
+<li>程序逻辑结构设计不合理，不严谨。</li>
+<li>除了程序逻辑结构设计漏洞之外，程序设计错误漏洞也是一个重要因素。</li>
+<li>由于目前硬件无法解决特定的问题，使编程人员只得通过软件设计来表现出硬件功能而产生的漏洞。</li>
+</ul>
+<p>&emsp;&emsp;漏洞生命周期：漏洞从客观存在到被发现、利用，到大规模危害和逐渐消失，这期间存在一个生命周期，概周期被称为漏洞生命周期。</p>
+<ol>
+<li>系统漏洞被发现，并发布安全公告。</li>
+<li>借助漏洞进行传播的病毒开始出现，并传播。</li>
+<li>利用漏洞的蠕虫病毒大肆爆发。</li>
+<li>系统漏洞被修复，但仍有发作。</li>
+<li>漏洞影响逐渐消失。</li>
+</ol>
+<p>&emsp;&emsp;系统漏洞的防范措施有：</p>
+<ol>
+<li>提升防火墙技术。</li>
+<li>加强病毒防范措施。</li>
+<li>注重漏洞扫描技术的应用。</li>
+<li>强化端口解析以及加强数据备份工作。</li>
+</ol>
+<p>&emsp;&emsp;漏洞扫描：对计算机系统或其他网络设备进行相关检测，找出安全隐患和可以被攻击者利用的漏洞。</p>
+<ul>
+<li>防火墙的局限性和脆弱性。</li>
+<li>针对$IDS$的逃避技术。</li>
+<li>网络隐患扫描系统浮出水面。</li>
+</ul>
+<p>&emsp;&emsp;扫描工具的选择需要考虑下面的因素：</p>
+<ol>
+<li>漏洞库中的漏洞数量。</li>
+<li>扫描工具的易用性。</li>
+<li>是否可以生成漏洞报告。</li>
+<li>对于漏洞修复行为的分析和建议。</li>
+<li>安全性。</li>
+<li>工具的性能及价格。</li>
+</ol>
+<h3 id="恶意代码"><a href="#恶意代码" class="headerlink" title="恶意代码"></a>恶意代码</h3><ul>
+<li><p>恶意代码：故意编制或设置的、对网络或系统会产生威胁和潜在威胁的计算机代码。主要包括<font color="royalblue">病毒、木马和蠕虫</font>等。</p>
+</li>
+<li><p>病毒：编制或者在计算机程序中插入的破坏计算机功能或者破坏数据，影响计算机使用并且能够自我复制的一组计算机指令或者程序代码。具有如下的特征：</p>
+<ul>
+<li>寄生性。</li>
+<li>传染性。</li>
+<li>潜伏性。</li>
+<li>隐蔽性。</li>
+<li>破坏性。</li>
+<li>可触发性。</li>
+</ul>
+<p>病毒会破坏$OS$的$CPU$管理功能、文件管理功能、存储管理功能、硬件资源。</p>
+<p>病毒的传播途径有：电脑的硬件设备、移动存储设备及电脑网络。</p>
+<p>常见的防范措施有：</p>
+<ol>
+<li><p>建立良好的安全习惯。</p>
+</li>
+<li><p>关闭或删除系统中不需要的服务。</p>
+</li>
+<li>经常升级安全补丁。</li>
+<li>使用复杂的密码。</li>
+<li>迅速隔离受感染的计算机。</li>
+<li>了解一些病毒知识。</li>
+<li>最好安装专业的杀毒软件进行全面监控。</li>
+<li>用户还应该安装个人防火墙软件进行防黑。</li>
+<li>安全管理类软件。</li>
+</ol>
+</li>
+<li><p>木马：被攻击者诱骗安装木马程序，该程序长期潜伏于被攻击者主机内，以实现攻击者对其长时间的破坏。</p>
+</li>
+<li><p>蠕虫：不仅具备病毒的破坏能力，还可以实现自我复制和传播。</p>
+</li>
+</ul>
+<h3 id="端口扫描威胁"><a href="#端口扫描威胁" class="headerlink" title="端口扫描威胁"></a>端口扫描威胁</h3><p>&emsp;&emsp;端口扫描通常指对目标计算机所有端口发送同一信息，然后根据返回端口状态来分析目标计算机的端口是否打开或者可用，以此来为下一步的攻击入侵做好准备。</p>
+<h2 id="操作系统安全防护"><a href="#操作系统安全防护" class="headerlink" title="操作系统安全防护"></a>操作系统安全防护</h2><p>&emsp;&emsp;操作系统安全防护有如下几类</p>
+<ol>
+<li>安全防护策略。<ul>
+<li>制定操作系统安全策略。</li>
+<li>关闭不必要的服务。</li>
+<li>关闭不必要的端口。</li>
+<li>开启审核策略。</li>
+<li>开启密码策略。</li>
+</ul>
+</li>
+<li>日志审核。</li>
+<li>补丁程序。<ul>
+<li>“高危漏洞”的补丁。</li>
+<li>软件安全更新的补丁。</li>
+<li>可选的高危漏洞补丁。</li>
+<li>其他及功能性更新补丁。</li>
+<li>无效补丁。</li>
+</ul>
+</li>
+<li>终端防护软件。</li>
+<li>个人防火墙。</li>
+</ol>
+<h1 id="应用与数据安全"><a href="#应用与数据安全" class="headerlink" title="应用与数据安全"></a>应用与数据安全</h1><h2 id="浏览器安全"><a href="#浏览器安全" class="headerlink" title="浏览器安全"></a>浏览器安全</h2><ul>
+<li><p>服务器端：网络中能对其它计算机和终端提供某些服务的计算机系统。</p>
+</li>
+<li><p>客户端：为客户提供本地服务的程序，一般安装在普通的客户机上，需要与服务器端互相配合运行。</p>
+</li>
+<li><p>客户端/服务器结构$(C/S)$​：此结构中客户端程序和服务器端程一通常分布于两台计算机上，客户端程序的任务是将用户的要求提交给服务器端程序，再将服务器端程序返回的结果以特定的形式显示给用户。</p>
+<p>服务器端程序的任务是接收客户端程序提出的服务请求，并进行相应的处理，再将结果返回给客户端程序。</p>
+</li>
+<li><p>浏览器/服务器结构$(B/S)$：终端用户不需要安装专门的软件，只需要安装浏览器即可。这种结构将系统功能的核心部分集一到服务器上。</p>
+</li>
+</ul>
+<p>&emsp;&emsp;浏览器安全措施：</p>
+<ol>
+<li>删除和管理$Cookie$。</li>
+<li>删除浏览历史记录。</li>
+<li>禁用$AcitveX$控件。</li>
+</ol>
+<h2 id="网上金融交易安全"><a href="#网上金融交易安全" class="headerlink" title="网上金融交易安全"></a>网上金融交易安全</h2><p>&emsp;&emsp;网上金融交易：用户通过因特网完成各种网络金融服务和网络电子商务支付。网络金融服务包括账户开户、查询、对帐、行内转账、跨行转<br>账、信贷、网上证券、投资理财等服务项目。网络电子商务支付可以使用银行卡或者第三方支付平台完成网络购物。</p>
+<p>&emsp;&emsp;网上金融交易常用安全措施如下：</p>
+<ol>
+<li>$USB-Key$。</li>
+<li>手机短信验证。</li>
+<li>口令卡。</li>
+<li>$HTTPS$。</li>
+</ol>
+<h2 id="电子邮件安全"><a href="#电子邮件安全" class="headerlink" title="电子邮件安全"></a>电子邮件安全</h2><p>&emsp;&emsp;电子邮件$(Electronic{\ }mail,Email)$：一种用电子手段提供信息交换的服务方式，是因特网上应用最为广泛的服务之一。</p>
+<p><img src="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/23.png" alt></p>
+<p>&emsp;&emsp;电子邮件安全威胁有如下几类：</p>
+<ol>
+<li>邮件地址欺骗：恶意攻击者冒充某人发送邮件。</li>
+<li>垃圾邮件：垃圾邮件如果只是邮件信息垃圾的话，本身并不具有安全隐患。但是如果在邮件中植入恶意链接或者恶意附件，就有可能导致邮件接收方出现问题。</li>
+<li>邮件病毒：与垃圾邮件破坏方式类似，会在邮件中添加恶意病毒或者木马程序。</li>
+<li>邮件炸弹：恶意攻击者向同一个邮箱发送大量垃圾邮件，旨在将目标邮箱空间耗尽，使其丧失邮件接收能力。</li>
+</ol>
+<p>&emsp;&emsp;电子邮件安全防护技术主要有下面两种：</p>
+<ol>
+<li>垃圾邮件过滤技术：设定黑名单，对特定发送者发送的邮件进行过滤。</li>
+<li>邮件加密和签名：为邮件进行加密传输，可以有效的保障邮件内容的私密性。</li>
+</ol>
+<h2 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h2><ul>
+<li>数据备份：为了避免人为误操作、硬件损坏或者不可抗的天灾人祸导致的数据丢失，非常需要数据备份。</li>
+<li>数据恢复：如果出现数据丢失，则需要进行数据恢复，保证业务系统的正常运行。<ul>
+<li>$EasyRecovery$​：当硬盘受病毒影响、格式化分区、误删除、断电或瞬间电流冲击造成的数据毁坏、程序的非正常操作或系统故障造成的数据毁坏等意外操作时，它可以帮助用户恢复丢失的数据以及重建文件系统。</li>
+<li>当用户误删除文件或者误格式化$U$盘后，不要在该分区中写入任何文件，否则这些需要恢复的数据就有可能被写入的数据覆盖，恢复数据的难度就会加大。因此，为了恢复误删除的数据，就不能对要修复的分区或硬盘进行新的读写操作。</li>
+</ul>
+</li>
+<li>数据加密：对于一些重要性或者机密性非常高的数据信息，需要进行加密。防止信息的泄露。<ul>
+<li>$PGPDisk$：该软件是美国$PGP$公司开发的$PGP$系列安全软件中的一个套件，它的核心思想是通过建立虚拟磁盘来存放并保护加密数据。用户在使用虚拟磁盘文件时需要输入令，所有存放在虚拟磁盘中的文件都是加密的。如果用户不需要这个虚拟磁盘，可以删除。</li>
+<li>$TrueCrypt$：这是一款免费开源的加密软件，同时支持多种操作系统。该软件通过在计算机上产生一个或几个虚拟盘来存放敏感数据，每个虚拟磁盘使用高强度密码算法进行加解密，加解密过程全部自动实现，用户只要输入正确的口令，就能读取这些文件，否则不能读取数据。</li>
+<li>为了数据安全，加密数据时应尽量保证：<ul>
+<li>加密过程足够强壮并覆盖整个磁盘，包括剩余空间、交换文件等。</li>
+<li>加密密钥足够长，能够抵御暴力破解攻击。</li>
+<li>加密密钥自身的机密性能够得到保障。</li>
+<li>还可以采用数字签名的方式保证数据文件的完整性和真实性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据删除：对于一些超过时效的数据，或者陈旧的数据，需要对其进行删除或者销毁。这基于数据的存储介质。如果是硬盘上的数据，可以通过不可恢复的手段进行删除，如果是类似光盘等不可擦写的存储介质，可以直接销毁光盘介质。</li>
+</ul>
+<h2 id="账户口令安全"><a href="#账户口令安全" class="headerlink" title="账户口令安全"></a>账户口令安全</h2><p>&emsp;&emsp;恶意攻击者窃取用户口令的方式主要有如下三种：</p>
+<ol>
+<li>暴力破解</li>
+<li>键盘记录木马</li>
+<li>屏幕快照木马</li>
+</ol>
+<p>&emsp;&emsp;无论面对哪种破解方式，都需要用户具有良好的计算机安全使用习惯。<strong>在设置口令时，建议采用三元组强口令模式。字母(大小写)、数字和特殊符号。</strong></p>
+<h1 id="移动智能终端安全防护"><a href="#移动智能终端安全防护" class="headerlink" title="移动智能终端安全防护"></a>移动智能终端安全防护</h1><p>&emsp;&emsp;移动智能终端：移动智能终端包括智能手机、平板电脑、笔记本电脑等可以便携移动的$IT$产品。移动智能终端具有以下功能：</p>
+<ul>
+<li>能够访问不同模式的移动通信网络。</li>
+<li>能够通过不同的网络接口访问因特网。</li>
+<li>具有开放的$API$接口。</li>
+<li>支持多任务。</li>
+<li>具有多媒体功能。</li>
+<li>具有$GPS$导航功能。</li>
+</ul>
+<h2 id="移动智能终端安全威胁"><a href="#移动智能终端安全威胁" class="headerlink" title="移动智能终端安全威胁"></a>移动智能终端安全威胁</h2><p>&emsp;&emsp;移动智能终端安全态势：</p>
+<ul>
+<li>智能终端操作系统敏感权限滥用。</li>
+<li>应用软件难溯源。</li>
+<li>智能终端操作系统漏洞。</li>
+<li>智能终端操作系统后门。</li>
+</ul>
+<p>&emsp;&emsp;移动智能终端面临的主要安全威胁：</p>
+<ol>
+<li>伪基站攻击：以自己为中心冒充基站，向周围手机发送垃圾短信，并且短信中包含恶意链接的情况。</li>
+<li><p>二维码扫描：二维码扫描可能带来如下风险：手机病毒、木马程序。</p>
+</li>
+<li><p>移动智能终端遗失：如果用户没有设置用户登录口令或者指纹解锁能功能，如果设备遗失可能导致个人信息的泄露。</p>
+</li>
+<li>手机扣费软件：错误安装了不可信任的$app$，可能导致该软件执行自动扣费，造成用户财产损失。</li>
+</ol>
+<h2 id="移动智能终端的安全使用"><a href="#移动智能终端的安全使用" class="headerlink" title="移动智能终端的安全使用"></a>移动智能终端的安全使用</h2><ol>
+<li>注意隐私权限访问请求。</li>
+<li>慎重扫描二维码。不要“见码就扫”，不要随意“晒码”。</li>
+<li>从正规渠道下载应用。</li>
+<li>安装安全防护软件。</li>
+<li>定期备份。</li>
+<li>不要登录到不安全的无线网络。</li>
+<li>尽量避免访问财务或银行信息。</li>
+<li>在上个网浏览时不要选择“记住我”。</li>
+<li>清空历史记录和缓存内容。</li>
+<li>启动用户认证。</li>
+<li>谨慎对待陌生信息。</li>
+<li>注意安全管理终端。</li>
+</ol>
+<h1 id="信息安全管理"><a href="#信息安全管理" class="headerlink" title="信息安全管理"></a>信息安全管理</h1><h2 id="信息安全管理概述"><a href="#信息安全管理概述" class="headerlink" title="信息安全管理概述"></a>信息安全管理概述</h2><p>&emsp;&emsp;信息安全管理$(Information{\ }Security{\ }Management，ISM)$，是管理者为实现信息安全目标而进行计划、组织、指挥、协调和控制的一系列活动。成功实施信息安全管理的关键因素通常包括以下内容：</p>
+<ol>
+<li>组织的活动能够反映组织的业务目标。</li>
+<li>组织所有级别的管理者能够给予信息安全实质性的、可见的支持和承诺。</li>
+<li>组织的管理者对信息安全要求、信息安全风险、风险评估及风险管理有正确深入的理解。</li>
+<li>向所有管理者、员工和其它相关方提供有效的信息安全宣传以提升信息安全意识。</li>
+<li>向所有管理者、员工和其它相关方分发、宣贯实行信息安全方针、策略和标准。</li>
+<li>管理者为信息安全消息和安全建设提供足够的资金。</li>
+<li>建立有效的信息安全时间管理过程。</li>
+<li>建立有效的信息安全测量体系。</li>
+</ol>
+<h2 id="信息安全风险管理"><a href="#信息安全风险管理" class="headerlink" title="信息安全风险管理"></a>信息安全风险管理</h2><p>&emsp;&emsp;信息安全风险：风险是一种潜在的、负面的东西，处于未发生的状态，它是指遭受损害或损失的可能性。因此，风险一方面客观存在，另一方面其发生的时间具有不确定性，风险一旦发生，将会产生损失。风险强调的是损害的潜在可能性，而不是事实上的损害，风险是不能消除殆尽的。</p>
+<ol>
+<li>威胁</li>
+<li>脆弱性</li>
+<li>影响</li>
+<li>资产</li>
+</ol>
+<p>&emsp;&emsp;风险管理是信息安全管理的基本方法，通过对组织信息资产实施一定的安全管理措施来保障信息的保密性、完整性和可用性。风险管理是组织机构识别、评估风险并采取相关活动，将风险降低到一个可接受级别的过程。它是单位管理活动的一部分，其管理的主要对象就是风险。以风险为驱动的信息安全管理，其核心就是通过识别风险、选择对策、消减风险。</p>
+<p>&emsp;&emsp;按照$GB/Z{}\ 24364-2009$《信息安全风险管理指南》，信息安全风险管理有四个基本步骤：<font color="royalblue">背景建立、风险评估、风险处理和批准监督</font>。</p>
+<h2 id="信息安全事件与应急响应"><a href="#信息安全事件与应急响应" class="headerlink" title="信息安全事件与应急响应"></a>信息安全事件与应急响应</h2><p>&emsp;&emsp;信息安全事件：由于自然或者人为以及软硬件本身缺陷或故障的原因，对信息系统造成危害，或在信息系统内发生对社会造成负面影响的事件。至<br>今尚没有任何一种信息安全策略或防护措施，能够对信息及信息系统提供绝对的保护，以完全避免信息安全事件的发生。对信息安全事件进行有效管理<br>和响应，最小化事件所造成的损失和负面影响，是组织信息安全战略的一部分。应急响应是信息安全事件管理的重要内容。</p>
+<p>&emsp;&emsp;信息安全事件基本分类如下：</p>
+<ol>
+<li>有害程序事件。</li>
+<li>网络攻击事件。</li>
+<li>信息破坏事件。</li>
+<li>信息内容安全事件。</li>
+<li>设备设施故障。</li>
+<li>灾害性事件和其他信息安全事件。</li>
+</ol>
+<p>&emsp;&emsp;对信息安全事件的分级主要考虑三个要素：</p>
+<ol>
+<li>信息系统的重要程度：对国家安全、经济建设和社会生活的重要性。</li>
+<li>系统损失：软硬件、功能和数据等的损失。损失大小取决于恢复所需付出的代价。</li>
+<li>社会影响：对于国家安全、社会秩序和公众利益等的影响。</li>
+<li><strong>特重大事件（一级）；重大事件（二级）；较大事件（三级）；一般事件（四级）</strong>。</li>
+</ol>
+<p>&emsp;&emsp;信息安全应急响应：一个组织为了应对各种安全意外事件的发生所采取的防范措施，既包括预防性措施，也包括事件发生后的应对措施。实践证明<br>现实中难以发现和抵御所有威胁，安全事件具有突发性、复杂性，所以需要建立信息系统安全事件的快速响应机制。应急响应工作的主要任务是做好预<br>先防范，安全事件发生后，尽快做出正确反应，及时阻止事件的继续发展，并减少损失，使系统恢复正常运行，同时采取追踪攻击者及必要的法律行动。应急响应主要发生在<strong>未雨绸缪（事前）和亡羊补牢（事后）</strong>两个方面。</p>
+<ol>
+<li>事前：管理上开展安全培训、制定安全政策和应急响应预案。技术上部署相应的安全加固解决方案。</li>
+<li>事后：采取抑制、根除和恢复等措施，减少损失。</li>
+</ol>
+<p>常见的应急响应组织有：</p>
+<ol>
+<li><p>计算机网络安全事件应急组</p>
+</li>
+<li><p>计算机安全事件响应组$(Computer{\ }Security Incident{\ }Response{\ }Team,CSIRT)$</p>
+</li>
+<li>信息安全事件响应组$(Information{\ }Security{\ }Incident{\ }Response{\ }Team,ISIRT)$</li>
+<li>事件响应组$(Incident{\ }esponse{\ }Team,IRT)$</li>
+<li>国家计算机网络应急技术处理协调中心$(National{\ }Computer{\ }Network{\ }Emergency{\ }Response{\ }Technical{\ }Team/Coordination{\ }Center{\ }of{\ }China,CN-CERT/CC)$</li>
+<li>国家计算机病毒应急处理中心</li>
+<li>国家计算机网络入侵防范中心</li>
+</ol>
+<p>&emsp;&emsp;<strong>信息安全应急响应管理过程</strong>：</p>
+<ol>
+<li>准备：事件发生前，做好应急预案、配置好人力、物力、政策和规程等各种资源。</li>
+<li>检测：该阶段要做好系统各种信息的收集，以及初步动作和响应。</li>
+<li>遏制：遏制的目的是限制安全事件的影响范围，降低潜在的损失。</li>
+<li>根除：事件被抑制后，需要查找问题根源，彻底解决安全事件。</li>
+<li>恢复：恢复的目的是把所有受到事件影响的系统和网络环境还原到正常工作状态。</li>
+<li>跟踪总结：目标是回顾整理发生事件的相关信息，包括安全事件的操作方法和步骤、时间文档与证据的管理记录等内容，总结经验教训。</li>
+</ol>
+<h2 id="灾难备份"><a href="#灾难备份" class="headerlink" title="灾难备份"></a>灾难备份</h2><p>&emsp;&emsp;灾难备份简称灾备，是指利用技术、管理手段以及相关资源，对关键数据、信息系统和业务进行备份的过程。</p>
+<ol>
+<li>恢复时间目标$(Recovery{\ }Time{\ }Objective,RTO)$：广义的$RTO$是指从灾难发生、$IT$系统宕机导致业务停顿开始到信息系统恢复业务运营所经过的时间。狭义的$RTO$指标则是指从决定进行容灾切换开始到恢复业务运营所经过的时间。$RTO$代表了一个组织能够承受的信息系统或业务的最长中断时间。通常，$RTO$越小，意味着容灾能力越高。</li>
+<li>恢复点目标$(Recovery{\ }Point{\ }Objective,RPO)$，指灾难发生前最后一次备份的时间，即当业务恢复后，可以达到与灾难发生前相同工作状态的那个时间点。$RPO$代表了当灾难发生后允许丢失的数据程度，如果$RPO$为$0$，就相当于没有丢失任何数据。</li>
+</ol>
+<p>&emsp;&emsp;灾难备份方法：</p>
+<ol>
+<li>本地备份和异地灾备。</li>
+<li>数据级灾备和系统级灾备(另外建立一个一模一样的)。</li>
+<li>完全备份和不完全备份。</li>
+</ol>
+<p>&emsp;&emsp;实际工作中常用的备份策略如下：</p>
+<ol>
+<li>执行完全备份。</li>
+<li>经常进行增量备份。</li>
+<li>定期执行差异备份。</li>
+</ol>
+<h1 id="信息安全法律法规"><a href="#信息安全法律法规" class="headerlink" title="信息安全法律法规"></a>信息安全法律法规</h1><h2 id="信息保护相关法律法规"><a href="#信息保护相关法律法规" class="headerlink" title="信息保护相关法律法规"></a>信息保护相关法律法规</h2><h3 id="保护国家秘密相关法律法规"><a href="#保护国家秘密相关法律法规" class="headerlink" title="保护国家秘密相关法律法规"></a>保护国家秘密相关法律法规</h3><p>&emsp;&emsp;《中华人民共和国保守国家秘密法》和《中华人民共和国刑法》中规定国家秘密的保密期限，绝密级不超过三十年、机密级不超过二十年、秘密级不超过十年。危害国家秘密的安全行为如下：</p>
+<ol>
+<li>严重违反保密规定行为。</li>
+<li>定密不当行为。</li>
+<li>公共信息网络运营商、服务商不履行保密义务的行为。</li>
+<li>保密行政管理部门工作人员的违法行为。</li>
+</ol>
+<p>&emsp;&emsp;危害国家秘密的安全的犯罪行为主要如下四类：</p>
+<ol>
+<li>危害国家安全的犯罪行为。</li>
+<li>妨碍社会管理秩序的犯罪行为。</li>
+<li>渎职的犯罪行为。</li>
+<li>军人违反职责的犯罪行为。</li>
+</ol>
+<h3 id="保护商业秘密相关法律法规"><a href="#保护商业秘密相关法律法规" class="headerlink" title="保护商业秘密相关法律法规"></a>保护商业秘密相关法律法规</h3><p>&emsp;&emsp;《中华人民共和国反不正当竞争法》《中国人民共和国劳动法》《中华人民共和国劳动合同法》《刑法》《刑事诉讼法》《民事诉讼法》。侵犯商业秘密的行为包括：</p>
+<ol>
+<li>以盗窃、利诱、胁迫或者其他不正当手段获取权利人的商业秘密。</li>
+<li>披露、使用或者允许他人使用上述手段获取权利人的商业秘密。</li>
+<li>违反约定或者违反权利人有关保守商业秘密的要求，披露、使用或者允许他人使用其所掌握的商业秘密。</li>
+</ol>
+<h3 id="保护个人信息相关法律法规"><a href="#保护个人信息相关法律法规" class="headerlink" title="保护个人信息相关法律法规"></a>保护个人信息相关法律法规</h3><p>&emsp;&emsp;目前我国还没有针对个人信息进行保护的专门立法，《中国人民共和国宪法》在“公民的基本权利和义务”章节中规定，公民的通信自由和通信秘密受法律保护。</p>
+<p>&emsp;&emsp;另外，《中国人民共和国居民身份证法》《中国人民共和国侵权责任法》《刑法》中也有对个人信息保护的相关条例。</p>
+<h2 id="打击网络违法犯罪相关法律法规"><a href="#打击网络违法犯罪相关法律法规" class="headerlink" title="打击网络违法犯罪相关法律法规"></a>打击网络违法犯罪相关法律法规</h2><p>&emsp;&emsp;由全国人民代表大会常务委员会于$2016$年$11$月$7$日发布，自$2017$年$6$月$1$日起施行《中华人民共和国网络安全法》。网络违法犯罪行为包括如下几类：</p>
+<ol>
+<li>破坏互联网运行安全的行为。</li>
+<li>破坏国家安全和社会稳定的行为。</li>
+<li>破坏市场经济秩序和社会管理秩序的行为。</li>
+<li>侵犯个人、法人和其他组织的人身、财产等合法权利的行为。</li>
+<li>利用互联网实施以上四类行为以外的违法犯罪行为。</li>
+</ol>
+<h2 id="信息安全管理相关法律法规"><a href="#信息安全管理相关法律法规" class="headerlink" title="信息安全管理相关法律法规"></a>信息安全管理相关法律法规</h2><ol>
+<li>《中国人民共和国保守国家秘密法》中明确授权由国家保密行政管理部门主管全国的保密工作;各级行政干部负责自己所辖区域的保密工作。</li>
+<li>《中国人民共和国人民警察法》中明确指出公安机关的人民警察按照职责分工。</li>
+<li>《中华人民共和国电子签名法》对电子认证服务提供者的监管进行了授权。</li>
+</ol>
+<h2 id="网络安全法"><a href="#网络安全法" class="headerlink" title="网络安全法"></a>网络安全法</h2><p>&emsp;&emsp;自$2017$年$6$月$1$日起施行的《中华人民共和国网络安全法》，是我国第一部全面规范网络空间安全管理方面问题的基础性法律，是互联网在法制轨道上安全、健康运行的重要保障。</p>
+<p>&emsp;&emsp;《网络安全法》提出网络主权原则、网络安全与信息化发展并重原则、共同治理原则。第一条即规定要维护我国网络空间主权，以“立法原则”的高度体现对网络空间主权的重视;第三条规定国家坚持网络安全与信息化并重，遵循积极利用、科学发展、依法管理、确保安全的方针，突出了《网络安全法》实施网络安全与信息化发展的原则;《网络安全法》要求政府、企业、社会组织、技术社群和公民等网络利益者共同参与网络空间安全的治理与维护，体现了共同治理的原则。</p>
+<p>&emsp;&emsp;《网络安全法》提出了制定网络安全战略，明确网络空间治理目标。第四条提出国家制定并不断完善网络安全战略，明确保障网络安全的基本要求和主要目标;第七条规定我国致力于“推动构建和平、安全、开放、合作的网络空间，建立多边、民主、透明的网络治理体系。”</p>
+<p>&emsp;&emsp;《网络安全法》第$8$条规定，国家网信部门负责统筹协调网络安全工作和相关监督管理工作，国务院电信主管部门、公安部门和其他有关机关依法在各自职责范围内负责网络安全保护和监督管理工作。进一步明确了政府各部门的职责权限，完善了网络安全监管体制。</p>
+<p>&emsp;&emsp;《网络安全法》第三章“网络运行安全”规范了网络运行安全，特别强调了要保障关键信息基础设施的运行安全，并通过明确关键信息基础设施运营者义务、国家审查、重要数据强制本地存储等法律措施，来确保信息基础设施的安全。</p>
+<p>&emsp;&emsp;《网络安全法》完善了网络安全义务与责任，加大法律违法惩处力度将原来散见于各种法规、规章中的规定上升到法律层面。第四章“网络信息安全’对网络运营者等主体的法律义务和责任做了全面规定，并在第六章“法律责任”中提高了违法行为的处罚标准，加大了处罚力度。</p>
+<p>&emsp;&emsp;《网络安全法》第五章“监测预警与应急措施”将监测预警与应急处置工作制度化、法制化，明确国家建立网络安全监测预警和信息通报制度，建立网络安全风险评估和应急工作机制，制定网络安全事件应急预案并定期演练。为建立统一高效的网络安全风险报告机制、情报共享机制、研判处置机制提供了法律依据，为深化网络安全防护体系，实现全天候全方位感知网络安全态势提供了法律保障。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Mi-Da-Da.github.io">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://mi-da-da.github.io/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/">http://mi-da-da.github.io/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Mi-Da-Da.github.io" target="_blank">米大大的Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/small094121jUdYg1738892481.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" title="考研之计算机网络——应用层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">考研之计算机网络——应用层</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Tom</div><div class="author-info-description">记录生活的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mi-Da-Da"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#categories%EF%BC%9A-NISP"><span class="toc-number">1.</span> <span class="toc-text">categories： NISP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0"><span class="toc-number"></span> <span class="toc-text">NISP一级考试笔记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">信息安全概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">信息与信息安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text">信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.</span> <span class="toc-text">信息安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81"><span class="toc-number">2.</span> <span class="toc-text">信息安全威胁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E5%9B%BD%E9%9D%A2%E4%B8%B4%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81"><span class="toc-number">2.1.</span> <span class="toc-text">我国面临的信息安全威胁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E4%BA%A7%E7%94%9F%E7%9A%84%E6%A0%B9%E6%BA%90"><span class="toc-number">2.2.</span> <span class="toc-text">信息安全问题产生的根源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5%E4%B8%8E%E5%BD%A2%E5%8A%BF"><span class="toc-number">3.</span> <span class="toc-text">信息安全发展阶段与形势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5"><span class="toc-number">3.1.</span> <span class="toc-text">信息安全发展阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E5%9B%BD%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BD%A2%E5%8A%BF"><span class="toc-number">3.2.</span> <span class="toc-text">我国信息安全形势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C"><span class="toc-number">4.</span> <span class="toc-text">信息安全保障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C"><span class="toc-number">5.</span> <span class="toc-text">信息系统安全保障</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">信息安全基础技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">密码学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text">加密与解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">哈希函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8E%E5%85%AC%E9%92%A5%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-number">2.</span> <span class="toc-text">数字证书与公钥基础设施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">身份认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">访问控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">安全审计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">网络安全防护技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">网络基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81"><span class="toc-number">2.</span> <span class="toc-text">网络安全威胁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E4%B8%8E%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.</span> <span class="toc-text">网络安全防护与实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91"><span class="toc-number">3.1.</span> <span class="toc-text">虚拟专用网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">3.2.</span> <span class="toc-text">防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4"><span class="toc-number">4.</span> <span class="toc-text">无线局域网安全防护</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E6%8A%80%E6%9C%AF"><span class="toc-number"></span> <span class="toc-text">操作系统安全防护技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81"><span class="toc-number">1.</span> <span class="toc-text">操作系统的安全威胁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%92%8C%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">漏洞和漏洞扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">恶意代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%A8%81%E8%83%81"><span class="toc-number">1.3.</span> <span class="toc-text">端口扫描威胁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4"><span class="toc-number">2.</span> <span class="toc-text">操作系统安全防护</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8"><span class="toc-number"></span> <span class="toc-text">应用与数据安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">浏览器安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E4%B8%8A%E9%87%91%E8%9E%8D%E4%BA%A4%E6%98%93%E5%AE%89%E5%85%A8"><span class="toc-number">2.</span> <span class="toc-text">网上金融交易安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8"><span class="toc-number">3.</span> <span class="toc-text">电子邮件安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">数据安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E5%8F%A3%E4%BB%A4%E5%AE%89%E5%85%A8"><span class="toc-number">5.</span> <span class="toc-text">账户口令安全</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4"><span class="toc-number"></span> <span class="toc-text">移动智能终端安全防护</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81"><span class="toc-number">1.</span> <span class="toc-text">移动智能终端安全威胁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E7%9A%84%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">移动智能终端的安全使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number"></span> <span class="toc-text">信息安全管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">信息安全管理概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">信息安全风险管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94"><span class="toc-number">3.</span> <span class="toc-text">信息安全事件与应急响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%81%BE%E9%9A%BE%E5%A4%87%E4%BB%BD"><span class="toc-number">4.</span> <span class="toc-text">灾难备份</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number"></span> <span class="toc-text">信息安全法律法规</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%BF%9D%E6%8A%A4%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">1.</span> <span class="toc-text">信息保护相关法律法规</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E5%9B%BD%E5%AE%B6%E7%A7%98%E5%AF%86%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">1.1.</span> <span class="toc-text">保护国家秘密相关法律法规</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E5%95%86%E4%B8%9A%E7%A7%98%E5%AF%86%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">1.2.</span> <span class="toc-text">保护商业秘密相关法律法规</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">1.3.</span> <span class="toc-text">保护个人信息相关法律法规</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%87%BB%E7%BD%91%E7%BB%9C%E8%BF%9D%E6%B3%95%E7%8A%AF%E7%BD%AA%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">2.</span> <span class="toc-text">打击网络违法犯罪相关法律法规</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">3.</span> <span class="toc-text">信息安全管理相关法律法规</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">网络安全法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/06/NISP%E4%B8%80%E7%BA%A7%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0/" title="无标题">无标题</a><time datetime="2026-05-06T09:53:43.939Z" title="发表于 2026-05-06 17:53:43">2026-05-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" title="考研之计算机网络——应用层">考研之计算机网络——应用层</a><time datetime="2026-04-21T10:02:58.000Z" title="发表于 2026-04-21 18:02:58">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" title="考研之计算机网络——传输层">考研之计算机网络——传输层</a><time datetime="2026-04-21T10:02:51.000Z" title="发表于 2026-04-21 18:02:51">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/" title="考研之计算机网络——网络层">考研之计算机网络——网络层</a><time datetime="2026-04-21T10:02:24.000Z" title="发表于 2026-04-21 18:02:24">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="考研之计算机网络——数据链路层">考研之计算机网络——数据链路层</a><time datetime="2026-04-21T10:02:06.000Z" title="发表于 2026-04-21 18:02:06">2026-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
