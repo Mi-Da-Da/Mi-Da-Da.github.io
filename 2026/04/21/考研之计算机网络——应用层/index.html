@@ -1,14 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>考研之计算机网络——应用层 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录生活的点点滴滴">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>考研之计算机网络——应用层 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="应用层网络应用模型客户&#x2F;服务器模型(C&#x2F;S) &emsp;&emsp;该模型的工作流程如下：  服务器长期运行，等待客户发送请求。 客户主动向服务器发出服务请求，因此客户需要知道服务器的地址。 服务器被动处理客户请求，并将处理结果返回给客户。因此服务器不需要提前知道客户的地址。  &emsp;&emsp;该模型有下列特点：  客户、服务器地位不平等，服务器处于中心。 客户进程之间不直接通信。 优点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="考研之计算机网络——应用层">
 <meta property="og:url" content="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/index.html">
 <meta property="og:site_name" content="米大大的Blog">
-<meta property="og:description" content="记录生活的点点滴滴">
+<meta property="og:description" content="应用层网络应用模型客户&#x2F;服务器模型(C&#x2F;S) &emsp;&emsp;该模型的工作流程如下：  服务器长期运行，等待客户发送请求。 客户主动向服务器发出服务请求，因此客户需要知道服务器的地址。 服务器被动处理客户请求，并将处理结果返回给客户。因此服务器不需要提前知道客户的地址。  &emsp;&emsp;该模型有下列特点：  客户、服务器地位不平等，服务器处于中心。 客户进程之间不直接通信。 优点">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg">
 <meta property="article:published_time" content="2026-04-21T10:02:58.000Z">
-<meta property="article:modified_time" content="2026-04-21T10:02:58.861Z">
+<meta property="article:modified_time" content="2026-05-24T09:09:17.979Z">
 <meta property="article:author" content="Tom">
+<meta property="article:tag" content="计算机网络 应用层">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg"><script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -17,7 +18,7 @@
   "url": "http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/",
   "image": "http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg",
   "datePublished": "2026-04-21T10:02:58.000Z",
-  "dateModified": "2026-04-21T10:02:58.861Z",
+  "dateModified": "2026-05-24T09:09:17.979Z",
   "author": [
     {
       "@type": "Person",
@@ -156,9 +157,200 @@
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '考研之计算机网络——应用层',
   isHighlightShrink: false,
-  isToc: false,
+  isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">考研之计算机网络——应用层</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">考研之计算机网络——应用层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-21T10:02:58.000Z" title="发表于 2026-04-21 18:02:58">2026-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-21T10:02:58.861Z" title="更新于 2026-04-21 18:02:58">2026-04-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">0</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Mi-Da-Da.github.io">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/">http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Mi-Da-Da.github.io" target="_blank">米大大的Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/small094121jUdYg1738892481.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" title="考研之计算机网络——传输层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">考研之计算机网络——传输层</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Tom</div><div class="author-info-description">记录生活的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mi-Da-Da"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" title="考研之计算机网络——应用层">考研之计算机网络——应用层</a><time datetime="2026-04-21T10:02:58.000Z" title="发表于 2026-04-21 18:02:58">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" title="考研之计算机网络——传输层">考研之计算机网络——传输层</a><time datetime="2026-04-21T10:02:51.000Z" title="发表于 2026-04-21 18:02:51">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/" title="考研之计算机网络——网络层">考研之计算机网络——网络层</a><time datetime="2026-04-21T10:02:24.000Z" title="发表于 2026-04-21 18:02:24">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="考研之计算机网络——数据链路层">考研之计算机网络——数据链路层</a><time datetime="2026-04-21T10:02:06.000Z" title="发表于 2026-04-21 18:02:06">2026-04-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%89%A9%E7%90%86%E5%B1%82/" title="考研之计算机网络——物理层">考研之计算机网络——物理层</a><time datetime="2026-04-21T10:01:57.000Z" title="发表于 2026-04-21 18:01:57">2026-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">考研之计算机网络——应用层</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">考研之计算机网络——应用层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-21T10:02:58.000Z" title="发表于 2026-04-21 18:02:58">2026-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-24T09:09:17.979Z" title="更新于 2026-05-24 17:09:17">2026-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%80%83%E7%A0%94/">考研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a><center>应用层</center></h1><h1 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h1><h2 id="客户-服务器模型-C-S"><a href="#客户-服务器模型-C-S" class="headerlink" title="客户/服务器模型(C/S)"></a>客户/服务器模型(C/S)</h2><p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/1.png" alt></p>
+<p>&emsp;&emsp;该模型的工作流程如下：</p>
+<ol>
+<li>服务器长期运行，等待客户发送请求。</li>
+<li>客户主动向服务器发出服务请求，因此客户需要知道服务器的地址。</li>
+<li>服务器被动处理客户请求，并将处理结果返回给客户。因此服务器不需要提前知道客户的地址。</li>
+</ol>
+<p>&emsp;&emsp;该模型有下列特点：</p>
+<ul>
+<li>客户、服务器地位不平等，服务器处于中心。</li>
+<li>客户进程之间不直接通信。</li>
+<li>优点：便于集中管理。</li>
+<li>缺点：服务器损坏会影响全局，并且<strong>处于中心位置的服务器负载大，其性能决定整个系统的性能</strong>。</li>
+</ul>
+<h2 id="P2P-Peer-to-Peer-模型"><a href="#P2P-Peer-to-Peer-模型" class="headerlink" title="P2P(Peer-to-Peer)模型"></a>P2P(Peer-to-Peer)模型</h2><p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/2.png" alt></p>
+<p>&emsp;&emsp;任意两台主机之间成为对等方$(Peer)$。</p>
+<ul>
+<li>该模型是去中心化的，主机之间地位平等并且直接通信。</li>
+<li>优点：<ul>
+<li>单个节点损坏不影响全局。</li>
+<li>各节点可以分摊负载。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>一个主机被服务的同时，也要为其他主机服务，主机负载较大。</li>
+<li>可能导致网络数据流量大，网络拥塞。</li>
+</ul>
+</li>
+</ul>
+<h1 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h1><ul>
+<li>域名：俗称的“网址”，例如$www.baidu.com$。</li>
+<li>域名系统$(DNS)$：将人类便于记忆的域名转换成计算机处理的$IP$地址，实现设备之间的通信寻址。<ul>
+<li>采用$C/S$工作方式。</li>
+<li>属于应用层协议，通常基于$UDP$，端口为$53$。</li>
+<li>属于分布式系统，即便单个计算机出现故障，也不会妨碍整个$DNS$系统的运行。</li>
+</ul>
+</li>
+<li>域名是分层次的，这样便于分级别授权与管理。</li>
+</ul>
+<h2 id="DNS层次域名空间"><a href="#DNS层次域名空间" class="headerlink" title="DNS层次域名空间"></a>DNS层次域名空间</h2><p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/3.png" alt></p>
+<ul>
+<li>低级域名在左，高级域名在右。</li>
+<li>域名由标号组成，标号间通过“.”分隔。</li>
+<li>标号：主要由英文（不区分大小写）、数字组成，允许用连字符。</li>
+<li>单标号$\le 63$字符，全域名总长（含点）$\le 255$字符。</li>
+</ul>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/4.png" alt></p>
+<ul>
+<li>顶级域由$ICANN$统一管理，上级机构可将子域逐级授权下级机构管理。</li>
+<li>根域名通常被记作一个点，可以省略不写。</li>
+<li>顶级域名可以分为如下几类：<ul>
+<li>国家顶级域名$(ccTLD)$：由各个国家管理，例如$.ru$、$.cn$。</li>
+<li>通用顶级域名$(gTLD)$：不局限于特定国家/地区，面向全球通用，例如$.com$、$.net$、$.org$。</li>
+<li>基础结构域名（反向域名）：用于反向域名解析，将$IP$地址转换为域名，只有$.arpa$。</li>
+</ul>
+</li>
+</ul>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><ul>
+<li>根域名服务器：使用固定$IP$地址，存储所有顶级域名服务器的$IP$地址，共有$13$组。<ul>
+<li>每组根域名服务器并非单台主机，而是在全球多地部署大量镜像节点，就近访问。</li>
+</ul>
+</li>
+<li>顶级域名服务器：管理该顶级域名服务器注册的所有二级域名，存储所管理的权限域名服务器的$IP$地址。</li>
+<li>权限域名服务器：负责某区域的域名服务器，存储与自己域名对应的$IP$地址。</li>
+<li>本地域名服务器：也可称为默认域名服务器，缓存近期被查询过的域名和$IP$的映射关系，并为缓存记录设置生存时间$TTL$。<ul>
+<li>用户主机的解析器也会保存本地$DNS$缓存，并设置$TTL$。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;域名解析就是将域名转换为$IP$地址的过程，可能会用到递归查询和迭代查询，主机在查询时可以指定查询方式。</p>
+<ul>
+<li>递归查询：请求顺序为本地域名服务器$\rightarrow$根域名服务器$\rightarrow$顶级域名服务器$\rightarrow$权限域名服务器。本地域名服务器只需要发送一次$DNS$请求报文。</li>
+<li>迭代查询：本地域名服务器依次向根域名服务器、顶级域名服务器和权限域名服务器发送请求。</li>
+</ul>
+<h1 id="FTP-File-Transfer-Protocol"><a href="#FTP-File-Transfer-Protocol" class="headerlink" title="FTP(File Transfer Protocol)"></a>FTP(File Transfer Protocol)</h1><p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/5.png" alt></p>
+<p>&emsp;&emsp;$FTP$属于<font color="red">应用层协议，采用$C/S$模型，基于$TCP$的可靠传输</font>。</p>
+<ul>
+<li><font color="Mulberry">控制连接：持久</font>连接，整个$FTP$会话期间都保持该$TCP$不中断。该连接用于传输控制信息。</li>
+<li><font color="royalblue">数据连接：非持久</font>连接，每次文件传输前建立连接，结束后就关闭连接。该连接用于上传、下载文件数据。</li>
+</ul>
+<p>&emsp;&emsp;$FTP$提供以下功能：</p>
+<ul>
+<li>提供<font color="royalblue">不同种类主机系统（硬、软件体系都可以不同）之间</font>的文件传输能力。</li>
+<li>以<strong>用户权限管理</strong>的方式通过用户对远程$FTP$服务器上的文件管理能力。</li>
+<li>以<strong>匿名$FTP$</strong>的方式提供公用文件共享的能力。</li>
+</ul>
+<p>&emsp;&emsp;$FTP$工作原理如下：</p>
+<ol>
+<li><p>登录阶段：</p>
+<p>(1) 服务器端主进程监听$TCP$的$21$端口。</p>
+<p>(2) 客户端控制进程向服务器$21$端口发出$TCP$连接请求。</p>
+<p>(3) 服务器主进程同意建立$TCP$连接，并创建一个控制进程，由控制进程继承这个$TCP$连接。</p>
+<p>(4) 客户端通过控制连接发出$FTP$登录请求，包含用户名、密码等。</p>
+</li>
+<li><p>数据传送阶段：</p>
+<ul>
+<li><p>主动模式$(PORT)$：服务器数据传送进程主动向客户端数据传送进程发起数据连接。</p>
+<p>(1) $C \rightarrow S$：客户端指明传输使用主动模式，向服务器传输$IP$及端口。</p>
+<p>(2) $S \rightarrow C$：服务器响应。</p>
+<p>(3) $C \rightarrow S$：客户端指明下载的文件。</p>
+<p>(4) $S \rightarrow C$：服务器检查当前用户是否有权限下载指定文件，并返回对(3)的响应。</p>
+<p>(5) $S \rightarrow C$：服务器数据传送进程用$20$端口主动与客户端建立$TCP$数据连接。</p>
+<p>(6) $S \rightarrow C$：正式开始传输文件。</p>
+<p>(7) $S \rightarrow C$：文件数据传输完成后，服务器主动断开$TCP$连接。</p>
+</li>
+<li><p>被动模式$(PASV)$：服务器数据传送进程被动等待客户端数据传送进程发起数据连接。</p>
+</li>
+</ul>
+</li>
+<li><p>登出阶段：</p>
+<p>(1) 客户端通过控制连接向服务器发送登出命令。</p>
+<p>(2) 服务器端返回对(1)的响应。</p>
+<p>(3) 经过四次$TCP$挥手，断开控制连接，$FTP$会话结束。</p>
+</li>
+</ol>
+<p>&emsp;&emsp;$FTP$具有以下特点：</p>
+<ul>
+<li>文件修改效率低，需要先下载再上传。</li>
+<li>分离控制与数据，控制命令不会因为数据传输而阻塞。</li>
+<li>客户端通过<font color="royalblue">控制连接</font>请求服务器返回文件列表（$LIST$命令），服务器通过<font color="Mulberry">数据连接</font>传输文件列表信息。</li>
+<li>数据传输默认主动模式，但是主动模式无法穿透$NAT$，现实中大多默认采用被动模式。</li>
+</ul>
+<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><ul>
+<li>简单邮件传输协议$(Simple{\ }Mail{\ }Transfer{\ }Protocl,SMTP)$：用于实现发邮件，采用$C/S$模型，基于$TCP$，端口号为$25$。</li>
+<li>邮局协议$(Post{\ }Office{\ }Protocol{\ }v3,POP3)$：用于实现接收邮件，采用$C/S$模型，基于$TCP$，端口号为$110$。</li>
+<li>多用途因特网邮件扩展$(Multipurpose{\ }Internet{\ }Mail{\ }Extensions,MIME)$：格式规范，对$SMTP$的传输格式进行了扩展。</li>
+</ul>
+<h2 id="组成结构"><a href="#组成结构" class="headerlink" title="组成结构"></a>组成结构</h2><p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/6.png" alt></p>
+<ul>
+<li>用户代理：提供用户界面，编辑、发送、接收邮件。</li>
+<li>邮件服务器：存放用户邮件，发送/接收邮件。</li>
+<li>电子邮件协议：通过邮件协议完成邮件的传输。</li>
+</ul>
+<h2 id="电子邮件的格式"><a href="#电子邮件的格式" class="headerlink" title="电子邮件的格式"></a>电子邮件的格式</h2><ul>
+<li>邮件由信封和内容构成，内容由首部和主体构成。</li>
+<li>首部由$To$、$From$、$Subject$构成，分别对应收件人、发件人和主题。</li>
+<li>信封是给$SMTP$协议的数据结构，由用户代理根据首部自动生成。</li>
+<li>$MIME$定义了$5$个新的邮件首部字段，文本、图片邮件主体格式以及传送编码。</li>
+</ul>
+<h1 id="万维网"><a href="#万维网" class="headerlink" title="万维网"></a>万维网</h1><p>&emsp;&emsp;网页由一个$html$文件和多个网页元素（图片、视频等文件）组成。浏览器访问网页的过程如下：</p>
+<ol>
+<li>用户输入网址。</li>
+<li>浏览器通过$DNS$服务器查询域名对应的$IP$地址。</li>
+<li>浏览器与\&lt;$Web$服务器$IP$地址:$80$端口>建立$TCP$连接。</li>
+<li>浏览器在握手$3$中携带$HTTP$请求报文。</li>
+<li>服务器返回$HTTP$响应报文。</li>
+<li>如果$html$引用其他元素，则还需要多组$HTTP$请求和响应。</li>
+</ol>
+<p><img src="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/7.png" alt></p>
+<p>&emsp;&emsp;万维网：一个全球范围内的、分布式、联机式的信息存储空间，各种资源通过$HTTP$协议传送给用户。它主要由下面三部分组成：</p>
+<ul>
+<li>统一资源定位符$(URL)$：$URL$=&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;，指向万维网上的某个特定资源，端口和路径可以省略。</li>
+<li>超文本传输协议$(HTTP)$：属于应用层协议，基于$TCP$。<ul>
+<li>$HTTP/1.0$默认采用非持续连接，$HTTP/1.1$默认采用持续连接。</li>
+</ul>
+</li>
+<li>超文本标记语言$(HTML)$：文档结构的标记语言，使用一些约定的标记对页面上的各种信息、格式进行描述。</li>
+</ul>
+<h1 id="超文本传输协议HTTP"><a href="#超文本传输协议HTTP" class="headerlink" title="超文本传输协议HTTP"></a>超文本传输协议HTTP</h1><p>&emsp;&emsp;$HTTP$工作方式有如下两种：</p>
+<ul>
+<li>$HTTP$非持续连接：完成一个请求和响应就释放连接，可以并行建立连接。</li>
+<li>$HTTP$持续连接：所有的请求和响应都完成才释放连接。<ul>
+<li>流水线：可以连续发出多个$HTTP$请求。</li>
+<li>非流水线：只有上一次$HTTP$请求收到响应后，才能发出下一次$HTTP$请求。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;$HTTP$请求报文中常用的方法如下：</p>
+<ul>
+<li>$GET$：请求读出由$URL$标识的信息。</li>
+<li>$HEAD$：请求读出$URL$标识的信息首部。</li>
+<li>$POST$：给服务器添加信息，如账号密码。</li>
+<li>$CONNECT$：用于代理服务器。</li>
+<li>$PUT$：向服务器发送数据，用于更新指定资源，若资源不存在则可能创建。</li>
+</ul>
+<p>&emsp;&emsp;$HTTP$请求报文中常见字段如下：</p>
+<ul>
+<li>$Accept$：指明客户端能够处理的内容类型。</li>
+<li>$Accept-Encoding$：指明客户端希望接收未经压缩或修改的响应内容。</li>
+<li>$Connection$：控制当前连接的管理方式，$keep-alive$表示持续连接。</li>
+<li>$Cookie$：携带客户端存储的$Cookie$信息，用于会话跟踪或身份验证。</li>
+<li>$Host$：主机名。</li>
+</ul>
+<p>&emsp;&emsp;$HTTP$响应报文的状态码分类如下：</p>
+<ul>
+<li>$1XX$：某类信息。</li>
+<li>$2XX$：响应成功。</li>
+<li>$3XX$：重定向。</li>
+<li>$4XX$：客户端错误，如$404$表示页面不存在。</li>
+<li>$5XX$：服务器错误。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Mi-Da-Da.github.io">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/">http://mi-da-da.github.io/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Mi-Da-Da.github.io" target="_blank">米大大的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%BA%94%E7%94%A8%E5%B1%82/">计算机网络 应用层</a></div><div class="post-share"><div class="social-share" data-image="/img/small094121jUdYg1738892481.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/21/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" title="考研之计算机网络——传输层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">考研之计算机网络——传输层</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" title="考研之计算机组成原理——计算机系统概述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">考研之计算机组成原理——计算机系统概述</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Tom</div><div class="author-info-description">记录生活的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mi-Da-Da"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">网络应用模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B-C-S"><span class="toc-number">2.1.</span> <span class="toc-text">客户&#x2F;服务器模型(C&#x2F;S)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-Peer-to-Peer-%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">P2P(Peer-to-Peer)模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-Domain-Name-System"><span class="toc-number">3.</span> <span class="toc-text">DNS(Domain Name System)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS%E5%B1%82%E6%AC%A1%E5%9F%9F%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-number">3.1.</span> <span class="toc-text">DNS层次域名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">3.2.</span> <span class="toc-text">域名解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FTP-File-Transfer-Protocol"><span class="toc-number">4.</span> <span class="toc-text">FTP(File Transfer Protocol)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">电子邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.</span> <span class="toc-text">组成结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">电子邮件的格式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%87%E7%BB%B4%E7%BD%91"><span class="toc-number">6.</span> <span class="toc-text">万维网</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AEHTTP"><span class="toc-number">7.</span> <span class="toc-text">超文本传输协议HTTP</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——输入和输出系统">考研之计算机组成原理——输入和输出系统</a><time datetime="2026-05-25T11:21:45.000Z" title="发表于 2026-05-25 19:21:45">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%80%BB%E7%BA%BF/" title="考研之计算机组成原理——总线">考研之计算机组成原理——总线</a><time datetime="2026-05-25T11:21:02.000Z" title="发表于 2026-05-25 19:21:02">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" title="考研之计算机组成原理——中央处理器">考研之计算机组成原理——中央处理器</a><time datetime="2026-05-25T11:20:52.000Z" title="发表于 2026-05-25 19:20:52">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——指令系统">考研之计算机组成原理——指令系统</a><time datetime="2026-05-25T11:20:42.000Z" title="发表于 2026-05-25 19:20:42">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——存储系统">考研之计算机组成原理——存储系统</a><time datetime="2026-05-25T11:20:33.000Z" title="发表于 2026-05-25 19:20:33">2026-05-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {

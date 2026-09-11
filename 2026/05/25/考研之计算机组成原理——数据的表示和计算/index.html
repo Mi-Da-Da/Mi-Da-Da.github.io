@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>考研之计算机组成原理——数据的表示和计算 | 米大大的Blog</title><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据的表示和计算数据的表示进位计数制 基数：每个数码位用到的不同符号的个数，$r$进制的基数为$r$。 位权：数制中每个数位所对应的“权重”，它与该数位的位置相关。     二进制和八进制互相转换：  二进制转八进制：$3$位一组，每组转换成对应的八进制符号。    八进制转二进制：每个八进制符号转换为$3$位的二进制符号。    二进制和十六进制互相转换：  二进制转十六进制：$4$位一组，每组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研之计算机组成原理——数据的表示和计算">
+<meta property="og:url" content="http://mi-da-da.github.io/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:site_name" content="米大大的Blog">
+<meta property="og:description" content="数据的表示和计算数据的表示进位计数制 基数：每个数码位用到的不同符号的个数，$r$进制的基数为$r$。 位权：数制中每个数位所对应的“权重”，它与该数位的位置相关。     二进制和八进制互相转换：  二进制转八进制：$3$位一组，每组转换成对应的八进制符号。    八进制转二进制：每个八进制符号转换为$3$位的二进制符号。    二进制和十六进制互相转换：  二进制转十六进制：$4$位一组，每组">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg">
+<meta property="article:published_time" content="2026-05-25T11:20:22.000Z">
+<meta property="article:modified_time" content="2026-07-31T03:10:27.734Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="计算机组成原理 数据的表示和计算">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "考研之计算机组成原理——数据的表示和计算",
+  "url": "http://mi-da-da.github.io/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/",
+  "image": "http://mi-da-da.github.io/img/small094121jUdYg1738892481.jpg",
+  "datePublished": "2026-05-25T11:20:22.000Z",
+  "dateModified": "2026-07-31T03:10:27.734Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Tom",
+      "url": "http://mi-da-da.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/20191009090430_tcbij.jpg"><link rel="canonical" href="http://mi-da-da.github.io/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '考研之计算机组成原理——数据的表示和计算',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/20191009090430_tcbij.jpg" alt="Logo"><span class="site-name">米大大的Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">考研之计算机组成原理——数据的表示和计算</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="https://Mi-Da-Da.github.io"><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">考研之计算机组成原理——数据的表示和计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-25T11:20:22.000Z" title="发表于 2026-05-25 19:20:22">2026-05-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-31T03:10:27.734Z" title="更新于 2026-07-31 11:10:27">2026-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%80%83%E7%A0%94/">考研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="数据的表示和计算"><a href="#数据的表示和计算" class="headerlink" title="数据的表示和计算"></a><center>数据的表示和计算</center></h1><h1 id="数据的表示"><a href="#数据的表示" class="headerlink" title="数据的表示"></a>数据的表示</h1><h2 id="进位计数制"><a href="#进位计数制" class="headerlink" title="进位计数制"></a>进位计数制</h2><ul>
+<li>基数：每个数码位用到的不同符号的个数，$r$进制的基数为$r$。</li>
+<li>位权：数制中每个数位所对应的“权重”，它与该数位的位置相关。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/1.png" alt></p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/2.png" alt></p>
+<ul>
+<li><p>二进制和八进制互相转换：</p>
+<ul>
+<li>二进制转八进制：$3$位一组，每组转换成对应的八进制符号。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/3.png" alt></p>
+<ul>
+<li>八进制转二进制：每个八进制符号转换为$3$位的二进制符号。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/5.png" alt></p>
+</li>
+<li><p>二进制和十六进制互相转换：</p>
+<ul>
+<li>二进制转十六进制：$4$位一组，每组转换成对应的十六进制符号。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/4.png" alt></p>
+<ul>
+<li>十六进制转二进制：每个十六进制符号转换为$4$位的二进制符号。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/6.png" alt></p>
+</li>
+<li><p>十进制数转换为二进制：整数部分采用<strong>除基取余法</strong>，倒序排列余数；小数部分采用<strong>乘基取整法</strong>，顺序排列整数部分。</p>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/7.png" alt></p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/8.png" alt></p>
+<ul>
+<li>八进制和十六进制转二进制时如果位数不够，则整数部分高位补$0$，小数部分低位补$0$。</li>
+<li>二进制可以写作$(00100101)_2$或者$00100101B$。</li>
+<li>十进制可以写作$(165)_{10}$或者$165D$</li>
+<li>十六进制可以写作$(A156)_{16}$或者$A156H$或者$0xA156$。</li>
+<li>真值：符合人类习惯的数字。</li>
+<li>机器数：数字实际存到机器里的形式，正负号需要被数字化。</li>
+</ul>
+<h2 id="定点数和浮点数"><a href="#定点数和浮点数" class="headerlink" title="定点数和浮点数"></a>定点数和浮点数</h2><ul>
+<li><p>定点数：固定的小数点，常规计数。</p>
+</li>
+<li><p>浮点数：小数点不固定，科学计数法。</p>
+</li>
+<li><p>无符号数：整个机器字长的全部二进制位均为数值位，没有符号位，相当于数的绝对值。$n$位无符号数表示范围为$0$~$2^n-1$。</p>
+</li>
+<li><p>有符号数：包括符号位和数值部分。</p>
+<ul>
+<li>符号位：$0$代表正，$1$代表负。</li>
+<li>数值部分：也称为“尾数”，若机器字长为$n$位，则尾数占$n-1$位。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/10.png" alt></p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/11.png" alt></p>
+<ul>
+<li>保存一个小数需要把整数部分和小数部分单独保存，对于整数部分，小数点隐含在最后一位后面；对于小数部分，小数点隐含在符号位后面。</li>
+</ul>
+</li>
+<li><p>原码：用尾数表示真值的绝对值，符号位$0/1$对应正/负。</p>
+<ul>
+<li>若机器字长为$n+1$位，则定点整数的表示范围为<font color="red">$-(2^n-1) \le x \le 2^n-1$</font>，定点小数的表示范围为<font color="red">$-(1-2^{-n}) \le x \le 1-2^{-n}$</font>。</li>
+<li>真值$0$有$+0$和$-0$两种形式。</li>
+<li>$-19$的原码可写为$[X]_原$ =$1,0010011$。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/9.png" alt></p>
+<ul>
+<li>反码：若符号位为$0$，则反码与原码相同；若符号位为$1$，则<font color="red">数值位全部取反</font>。反码是原码转换为补码的中间体。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/12.png" alt></p>
+<ul>
+<li>补码：正数的补码与原码相同，负数的补码是反码末位加一（需要考虑进位）。<ul>
+<li>补码的$0$只有一种表示，即$00000000$。因此规定补码$1,0000000=-2^7$，补码$1.0000000=−1$。</li>
+<li>定点整数的补码比原码多一个$-2^n$，定点小数的补码比原码多一个$-1$。</li>
+<li>补码可以把减法操作转变为等价的加法。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/13.png" alt></p>
+<ul>
+<li>移码：补码的基础上将符号位取反，只能用于表示整数。<ul>
+<li>移码表示的整数可以很方便对比大小。</li>
+</ul>
+</li>
+</ul>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><ul>
+<li><p>$C$语言中定点整数使用补码存储。</p>
+</li>
+<li><p>无符号数和有符号数：<font color="RoyalBlue">不改变数据内容，改变解释方式。</font></p>
+</li>
+<li>长整数变短整数：<font color="Mulberry">高位截断，保留低位。</font></li>
+<li>短整数变长整数：符号扩展。无符号数零扩展，有符号数用符号扩展。<ul>
+<li>零扩展：适用于无符号整数，用$0$扩展高位。</li>
+<li>符号扩展：适用于带符号整数，用符号位扩展高位。</li>
+</ul>
+</li>
+</ul>
+<h1 id="整数的计算"><a href="#整数的计算" class="headerlink" title="整数的计算"></a>整数的计算</h1><h2 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h2><ul>
+<li><p>一位全加器$(FA)$：实现两个一位二进制数的加法。</p>
+<ul>
+<li>本位：进行运算的位。</li>
+<li>进位：低位加法溢出产生进位。</li>
+<li>被加数本位$A<em>i$，加数本位$B_i$，来自低位的进位$C</em>{i-1}$，本位和$S_i$，向高位的进位$C_i$。</li>
+<li>当输入中有奇数个$1$时，本位和为$1$，即$S<em>i=A_i \oplus B_i \oplus C</em>{i-1}$。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/15.png" alt></p>
+<ul>
+<li>当输入中至少有$2$个$1$时，进位为$1$，即$C<em>i=A_iB_i+(A_i \oplus B_i)C</em>{i-1}$。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/16.png" alt></p>
+<ul>
+<li>封装后的一位全加器如下所示：</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/14.png" alt></p>
+</li>
+<li><p>并行加法器：两个输入端允许并行输入两个$nbit$数进行加法运算。</p>
+<ul>
+<li>串行进位：将$n$个一位全加器串联起来，就可以进行两个$nbit$数的相加。这种方式的进位信息是串行产生的，计算速度取决于进位产生和传递的速度，位数越多越慢。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/17.png" alt></p>
+<ul>
+<li>并行进位：进位信息同时产生，运算速度更快。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/18.png" alt></p>
+</li>
+<li><p>带标志位的加法器：在并行加法器的基础上，增加电路逻辑，输出如下的标志位。</p>
+<p>| 标志位 |     翻译      |               作用               |                含义                 |<br>| :——: | :—————-: | :———————————————: | :————————————————-: |<br>|  $OF$  |   溢出标志    |   判断带符号数加减运算是否溢出   |      $OF=1$溢出，反之未溢出。       |<br>|  $SF$  |   符号标志    | 判断带符号数加减运算结果的正负性 | $SF=1$表示结果为负，反之结果为正。  |<br>|  $ZF$  |    零标志     |     判断加减运算结果是否为零     | $ZF=1$表示结果为$0$，反之结果非零。 |<br>|  $CF$  | 进位/借位标志 | 判断无符号数加减运算结果是否溢出 |      $CF=1$溢出，反之未溢出。       |</p>
+<ul>
+<li>$OF=C<em>n \oplus C</em>{n-1}$。</li>
+<li>$SF=S_n$。</li>
+<li>$ZF=S_n+…+S_2+S_1$。</li>
+<li>$CF=C<em>{out} \oplus C</em>{in}=C_n \oplus C_0$。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/19.png" alt></p>
+<h2 id="算术逻辑单元ALU"><a href="#算术逻辑单元ALU" class="headerlink" title="算术逻辑单元ALU"></a>算术逻辑单元ALU</h2><p>&emsp;&emsp;$CPU$由控制器和运算器组成。<font color="RoyalBlue">控制器负责解析指令</font>，并根据指令功能发出相应的控制信号；<font color="RoyalBlue">运算器负责对数据进行处理</font>。$ALU$是一种组合逻辑电路，实现了加、减、乘、除、与、或、非等功能，是<font color="red">运算器的核心</font>。加减乘除等运算都要基于“加法”实现，因此<font color="red">加法器是$ALU$的核心</font>。</p>
+<p>&emsp;&emsp;$ALU$有如下功能：</p>
+<ul>
+<li>算术运算：加、减、乘、除等。</li>
+<li>逻辑运算：与、或、非、异或、移位等。</li>
+<li>其他：求补码、直送等。</li>
+</ul>
+<p>&emsp;&emsp;如果<font color="red">$ALU$支持$k$种功能，则控制信号位数$m \ge \lceil log_2k \rceil$</font>。<font color="Mulberry">$PSW$寄存器（有时候也叫$FR$寄存器）中存储了标志位的信息，用于展示本次运算结果的特征</font>。</p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/20.png" alt></p>
+<h2 id="定点数的移位运算"><a href="#定点数的移位运算" class="headerlink" title="定点数的移位运算"></a>定点数的移位运算</h2><p>&emsp;&emsp;移位运算：通过改变各个数码位和小数点的相对位置，从而改变各数码位的位权。<font color="Mulberry">逻辑移位常用于处理无符号整数</font>，<font color="RoyalBlue">算数移位常用于处理带符号整数</font>。</p>
+<ul>
+<li>逻辑移位：<ul>
+<li>逻辑左移：高位移出丢弃，低位补$0$。对于无符号整数，每逻辑左移一位，就相当于$\times 2$。若逻辑左移丢弃的位为$1$，则发生<strong>溢出</strong>。</li>
+<li>逻辑右移：低位移出丢弃，高位补$0$。对于无符号整数，每逻辑右移一位，就相当于$/ 2$。若逻辑右移丢弃的位为$1$，则会<strong>丢弃精度</strong>。</li>
+</ul>
+</li>
+<li>算数移位：<ul>
+<li>算数左移：高位移出丢弃，低位补$0$。对于带符号整数，每算数左移一位，就相当于$\times 2$。若算数左移前后的符号位不同，则发生<strong>溢出</strong>。</li>
+<li>算数右移：低位移出丢弃，高位补符号位。对于带符号整数，每算数右移一位，就相当于$/ 2$。若算数右移丢弃的位为$1$，则会<strong>丢弃精度</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="定点数的加减运算"><a href="#定点数的加减运算" class="headerlink" title="定点数的加减运算"></a>定点数的加减运算</h2><ul>
+<li>原码的加法运算：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">被加数+加数</th>
+<th style="text-align:center">运算规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正+正</td>
+<td style="text-align:center">绝对值做加法，结果为正，可能会溢出</td>
+</tr>
+<tr>
+<td style="text-align:center">负+负</td>
+<td style="text-align:center">绝对值做加法，结果为负，可能会溢出</td>
+</tr>
+<tr>
+<td style="text-align:center">正+负</td>
+<td style="text-align:center">绝对值大的减绝对值小的，符号同绝对值大的数</td>
+</tr>
+<tr>
+<td style="text-align:center">负+正</td>
+<td style="text-align:center">绝对值大的减绝对值小的，符号同绝对值大的数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>原码的减法运算：减数符号取反，转变为加法。</p>
+</li>
+<li><p>补码的运算：$[A+B]<em>补=[A]</em>补+[B]<em>补$，$[A-B]</em>补=[A]<em>补+[-B]</em>补$。</p>
+<ul>
+<li>正数相加会发生<strong>上溢</strong>，出现“正+正=负”的情况。</li>
+<li>负数相加会发生<strong>下溢</strong>，出现“负+负=正”的情况。</li>
+<li>溢出判断：<ol>
+<li>采用一位符号位，$V=A_SB_S \overline{S_S}+\overline{A_SB_S}S_S$，其中运算结果符号为$S_S$。当$V=0$时无溢出，反之则溢出。</li>
+<li>采用一位符号位，根据数据位进位情况判断溢出。符号位的进位$C_S$，最高数值位的进位$C_1$，二者不同表明发生溢出（异或运算实现）。</li>
+<li>采用双符号位，正数符号位$00$，负数符号位$11$。运算后若两个符号位不一致，则发生溢出。</li>
+<li>单符号位补码称为模$2$补码，双符号位补码称为模$4$补码。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/21.png" alt></p>
+<h2 id="无符号数的加减运算"><a href="#无符号数的加减运算" class="headerlink" title="无符号数的加减运算"></a>无符号数的加减运算</h2><ul>
+<li>加法：从最低位开始按位相加，并向更高位进位。</li>
+<li>减法：被减数不变，减数取反加一，减法变成加法。</li>
+<li>无符号数加法运算溢出判断：最高位产生的进位为$1$时，发生溢出。</li>
+<li>无符号数减法运算溢出判断：最高位产生的进位为$0$时，发生溢出。</li>
+</ul>
+<h2 id="无符号整数的乘法运算"><a href="#无符号整数的乘法运算" class="headerlink" title="无符号整数的乘法运算"></a>无符号整数的乘法运算</h2><p>&emsp;&emsp;基本原理：逐位相乘，错位相加。</p>
+<ul>
+<li>两个$nbit$无符号数的乘法运算，可拆解为$n$轮加法运算。</li>
+<li>根据乘数的各个$bit$，决定每一轮加法运算<strong>加被乘数或者加全$0$</strong>。</li>
+<li>每一轮加法结果与上一轮加法结果需要错位相加。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/22.png" alt></p>
+<p>&emsp;&emsp;$nbit$无符号整数乘法步骤如下：</p>
+<ol>
+<li><p>开始：被乘数、乘数分别放入寄存器$X$和$Y$，乘积寄存器$P$置为$0$，计数器$C_n$初始值置为$n$（$n$为乘数的位数）。</p>
+<ul>
+<li>若被乘数和乘数中有一个为全$0$，则无需运算，结果直接为$0$。</li>
+</ul>
+</li>
+<li><p>重复$n$轮加法、移位运算直至计数器为$0$。</p>
+<p>(1) <font color="red">乘数寄存器$Y$最低位</font>放入控制逻辑进行判断。</p>
+<p>(2) 若最低位为$1$，则执行<font color="red">加法</font>，运算结果写回$P$，进位保存至进位触发器$C$；若最低位为$0$，则什么也不做。</p>
+<p>(3) 将$[C,P,Y]$视为一体，<strong>逻辑右移一位</strong>。</p>
+<p>(4) <font color="Periwinkle">计数器$C_n$减$1$</font>。</p>
+</li>
+<li><p>结束：计数器为$0$，乘法结果用$2n$位暂存（寄存器$P$和$Y$），通常只保留低$n$位作为结果。若高$n$位不全为$0$则发生溢出，设置$OF$为$1$，可以忽略也可以执行“溢出自陷指令”。</p>
+</li>
+</ol>
+<h2 id="带符号整数的乘法运算"><a href="#带符号整数的乘法运算" class="headerlink" title="带符号整数的乘法运算"></a>带符号整数的乘法运算</h2><ul>
+<li>带有符号，因此可能会有加法和减法。</li>
+<li>在$Y$的低位增加一位辅助位。</li>
+<li>控制逻辑根据$Y$的最低位和辅助位决定本轮如何处理。</li>
+<li>不保存最高位产生的进位。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/25.png" alt></p>
+<p>&emsp;&emsp;$nbit$带符号整数乘法步骤如下：</p>
+<ol>
+<li><p>开始：被乘数、乘数分别放入寄存器$X$和$Y$，乘积寄存器$P$置为$0$，辅助位置为$0$，计数器$C_n$初始值置为$n$。</p>
+<ul>
+<li>若被乘数和乘数中有一个为全$0$，则无需运算，结果直接为$0$。</li>
+</ul>
+</li>
+<li><p>重复$n$轮加/减法、移位运算直至计数器为$0$。</p>
+<p>(1) <font color="red">乘数寄存器$Y$最低位和辅助位</font>放入控制逻辑进行判断。</p>
+<p>(2) 根据寄存器$Y$的最低位和辅助位，决定是$+[x]<em>补$、$-[x]</em>补$或$+0$。</p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/23.png" alt></p>
+<p>(3) 将$[P,Y,辅助位]$视为一体，<strong>算数右移一位</strong>。</p>
+<p>(4) <font color="Periwinkle">计数器$C_n$减$1$</font>。</p>
+</li>
+<li><p>结束：计数器为$0$，乘法结果用$2n$位暂存（寄存器$P$和$Y$），通常只保留低$n$位作为结果。若高$n+1$位不完全相同则发生溢出，设置$OF$为$1$，可以忽略也可以执行“溢出自陷指令”。</p>
+</li>
+</ol>
+<h2 id="实现乘法运算"><a href="#实现乘法运算" class="headerlink" title="实现乘法运算"></a>实现乘法运算</h2><p>&emsp;&emsp;计算机实现乘法运算主要有下面三种方式：</p>
+<ul>
+<li>由$ALU$、移位器、寄存器、控制逻辑组成的乘法电路。<ul>
+<li>实现$nbit$无符号数相乘，至少需要$n$个时钟。可以实现两位乘法，每次处理$Y$末尾的$2bit$，此时仅需$\frac{n}{2}$个时钟。</li>
+</ul>
+</li>
+<li>阵列乘法器：可以在一个时钟内完成乘法运算。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/24.png" alt></p>
+<ul>
+<li>用移位运算、加/减运算等效实现乘法。<ul>
+<li>优点：在没有乘法运算电路、不支持乘法指令的计算机中，也可以等效实现乘法效果。</li>
+<li>缺点：运算速度很慢，每条指令的执行至少需要一个时钟。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">multiply_unsigned</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x,<span class="type">unsigned</span> <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> reult = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 提取乘数y的最低位</span></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bit = y &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 如果当前位为1，则加上被乘数x；如果当前位为0，则什么都不做</span></span><br><span class="line">        <span class="keyword">if</span>(bit)</span><br><span class="line">        &#123;</span><br><span class="line">            result += x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 被乘数x左移一位，乘数y右移一位</span></span><br><span class="line">        x &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        y &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="无符号整数的除法"><a href="#无符号整数的除法" class="headerlink" title="无符号整数的除法"></a>无符号整数的除法</h2><p>&emsp;&emsp;二进制上商规则：商和除数的乘积，要尽可能接近“中间余数”，但不能大于中间余数。</p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/26.png" alt></p>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/27.png" alt></p>
+<p>&emsp;&emsp;$nbit$无符号整数除法步骤如下：</p>
+<ol>
+<li><p>开始：将<font color="orange">除数放入寄存器$Y$</font>，<font color="RoyalBlue">被除数放入寄存器$[R,Q]$并完成零扩展</font>，计数器$C_n$初始值置为$n$。</p>
+<ul>
+<li>若<strong>除数为$0$</strong>，则发生<font color="red">“除数为$0$”</font>异常，停止运算并调用操作系统的异常处理程序。</li>
+<li>若<strong>被除数绝对值小于除数绝对值</strong>，则商为$0$，余数=被除数，不必运行除法。</li>
+<li>双精度除法$(2nbit / nbit)$可能会出现商溢出，单精度除法$(nbit / nbit)$不会出现商溢出。</li>
+</ul>
+</li>
+<li><p>进行$1+n$轮处理，直至计数器为$0$。</p>
+<p>(1) 第一轮特殊处理：直接上商，若<font color="Periwinkle">第一位商为$1$</font>，则发生<font color="red">商溢出异常</font>，停止除法运算（结果只保留$nbit$）；若<font color="Periwinkle">第一位商为$0$</font>，则不会发生商溢出。</p>
+<p>(2) 后面$n$轮：先左移，空出的位置用于上商。</p>
+<p>(3) 上商，可能进行加法或减法。</p>
+<p>(4) <font color="Periwinkle">计数器$C_n$减$1$</font>。</p>
+</li>
+<li><p>结束：计数器为$0$，除法运算结束。寄存器$R$保存余数，寄存器$Q$保存商。</p>
+</li>
+</ol>
+<h2 id="带符号整数的除法"><a href="#带符号整数的除法" class="headerlink" title="带符号整数的除法"></a>带符号整数的除法</h2><p>&emsp;&emsp;$nbit$带符号整数除法步骤如下：</p>
+<ol>
+<li><p>开始：将<font color="orange">除数放入寄存器$Y$</font>，<font color="RoyalBlue">被除数放入寄存器$[R,Q]$并完成符号扩展</font>，计数器$C_n$初始值置为$n$。</p>
+<ul>
+<li>若<strong>除数为$0$</strong>，则发生<font color="red">“除数为$0$”</font>异常，停止运算并调用操作系统的异常处理程序。</li>
+<li>若<strong>被除数绝对值小于除数绝对值</strong>，则商为$0$，余数=被除数，不必运行除法。</li>
+</ul>
+</li>
+<li><p>进行$n$轮处理，直至计数器为$0$。</p>
+<p>(1) 先左移，空出的位置用于上商。</p>
+<p>(2) 上商：由控制逻辑根据<strong>中间余数和除数</strong>的符号组合，来决定本轮做<font color="red">减法或加法</font>。再根据$ALU$运算结果的符号位决定上商为$0$或$1$。</p>
+<ul>
+<li>新余数与老余数相比，<font color="Periwinkle">符号不变上商$1$，符号变了上商$0$</font>。</li>
+</ul>
+<p>(3) <font color="Periwinkle">计数器$C_n$减$1$</font>。</p>
+</li>
+<li><p>结束：计数器为$0$，除法运算结束。寄存器$R$保存余数，寄存器$Q$保存商。</p>
+</li>
+</ol>
+<h1 id="浮点数的计算"><a href="#浮点数的计算" class="headerlink" title="浮点数的计算"></a>浮点数的计算</h1><h2 id="IEEE-754-浮点数的表示"><a href="#IEEE-754-浮点数的表示" class="headerlink" title="IEEE 754 浮点数的表示"></a>IEEE 754 浮点数的表示</h2><ul>
+<li>科学计数法表示的数由符号、尾数和基数构成。<ul>
+<li>规格化：确保尾数的<font color="red">最高位非$0$数位</font>刚好在小数点之前。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/28.png" alt></p>
+<ul>
+<li>$IEEE{\ }754$标准定义的浮点数格式如下：<ul>
+<li>还定义了$80bit$的扩展精度浮点型，$16bit$的半精度浮点型、$128bit$的四倍精度浮点型。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/29.png" alt></p>
+<ul>
+<li>$float$单精度浮点型的存储：<ul>
+<li>符号：$0$正$1$负。</li>
+<li><font color="Mulberry">尾数</font>：小数点位置在$23bit$之前，默认存储规格化尾数，小数点前的$1$省略。</li>
+<li><font color="RoyalBlue">阶码</font>：用<font color="RoyalBlue">移码</font>表示，规定偏置值为$127$。<ul>
+<li>十进制真值转偏置值为$M$的移码：将十进制真值+偏置值，然后按无符号整数规则转换指定位数。</li>
+</ul>
+</li>
+<li><font color="gray">基数</font>：无需专门存储，规定基数为$2$即可。</li>
+</ul>
+</li>
+<li>$double$双精度浮点型的存储：<ul>
+<li>符号：$0$正$1$负。</li>
+<li><font color="Mulberry">尾数</font>：小数点位置在$52bit$之前，默认存储规格化尾数，小数点前的$1$省略。</li>
+<li><font color="RoyalBlue">阶码</font>：用<font color="RoyalBlue">移码</font>表示，规定偏置值为$1023$。</li>
+<li><font color="gray">基数</font>：无需专门存储，规定基数为$2$即可。</li>
+</ul>
+</li>
+</ul>
+<h2 id="浮点数的表示范围"><a href="#浮点数的表示范围" class="headerlink" title="浮点数的表示范围"></a>浮点数的表示范围</h2><p>&emsp;&emsp;$IEEE{\ }754$标准规定阶码的范围如下：</p>
+<ul>
+<li>当阶码不全为$0$，也不全为$1$，表示这是一个“规格化浮点数”。</li>
+<li>阶码全为$0$和全为$1$留作特殊用途。<ul>
+<li>正无穷大中，符号为$0$，阶码全$1$，尾数全$0$；负无穷大中，符号为$1$，阶码全$1$，尾数全$0$。</li>
+<li>正零的符号为$0$，阶码全$0$，尾数全$0$；负零的符号为$1$，阶码全$0$，尾数全$0$。</li>
+<li>非数：符号为$0$或$1$，阶码全$1$，尾数不全为$0$，此时为$NaN$。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;规格化浮点数的表示范围如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">符号、阶码、尾数</th>
+<th style="text-align:center">二进制</th>
+<th>十进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正数最小</td>
+<td style="text-align:center">$0,00000001,000…00$</td>
+<td style="text-align:center">$+1.0 \times 2^{-126}$</td>
+<td>$+1.0 \times 2^{-126}$</td>
+</tr>
+<tr>
+<td style="text-align:center">正数最大</td>
+<td style="text-align:center">$0,11111110,111…11$</td>
+<td style="text-align:center">$+1.111..11 \times 2^{127}$</td>
+<td>$+(2-2^{23}) \times 2^{127}$</td>
+</tr>
+<tr>
+<td style="text-align:center">负数最小</td>
+<td style="text-align:center">$1,11111110,111..11$</td>
+<td style="text-align:center">$-1.111..11 \times 2^{127}$</td>
+<td>$-1.0 \times 2^{-126}$</td>
+</tr>
+<tr>
+<td style="text-align:center">负数最大</td>
+<td style="text-align:center">$1,00000001,000..00$</td>
+<td style="text-align:center">$-1.0 \times 2^{-126}$</td>
+<td>$-(2-2^{23}) \times 2^{127}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&emsp;&emsp;非规格化浮点数的表示范围如下：</p>
+<ul>
+<li>非规格化的阶码全$0$，阶码真值为$1-$偏置值，尾数的小数点前隐含$0$。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">符号、阶码、尾数</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">十进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正数最小</td>
+<td style="text-align:center">$0,00000000,000..01$</td>
+<td style="text-align:center">$+0.000..01 \times 2^{-126}$</td>
+<td style="text-align:center">$2^{-149}$</td>
+</tr>
+<tr>
+<td style="text-align:center">正数最大</td>
+<td style="text-align:center">$0,00000000,111..11$</td>
+<td style="text-align:center">$+0.111..11 \times 2^{-126}$</td>
+<td style="text-align:center">$2^{-126}-2^{-149}$</td>
+</tr>
+<tr>
+<td style="text-align:center">负数最小</td>
+<td style="text-align:center">$1,00000000,111..11$</td>
+<td style="text-align:center">$-0.111..11 \times 2^{-126}$</td>
+<td style="text-align:center">$2^{-149}-2^{-126}$</td>
+</tr>
+<tr>
+<td style="text-align:center">负数最大</td>
+<td style="text-align:center">$1,00000000,000..01$</td>
+<td style="text-align:center">$-0.000..01 \times 2^{-126}$</td>
+<td style="text-align:center">$-2^{-149}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>浮点数的上溢：运算结果大于最大规格化正数时称为<font color="red">正上溢</font>，小于绝对值最大的规格化负数时称为<font color="red">负上溢</font>，此时将结果置为$+\infty$或$-\infty$。</li>
+<li>浮点数的下溢：运算结果在零和最小非规格化正数之间称为<font color="red">正下溢</font>，在绝对值最小的非规格化负数和零之间称为<font color="red">负下溢</font>，此时将结果置为机器零。</li>
+</ul>
+<h2 id="浮点数的加减运算"><a href="#浮点数的加减运算" class="headerlink" title="浮点数的加减运算"></a>浮点数的加减运算</h2><ol>
+<li>对阶：小阶向大阶对齐。</li>
+<li>尾数加减。</li>
+<li>尾数规格化：如果加减后出现类似$0.009527 \times 10^{12}$的情况，需要左规；出现类似$95.27 \times 10^{10}$的情况，需要右规。</li>
+<li>尾数的舍入处理：一般为就近舍入，还有正向舍入、负向舍入以及截断法。就近舍入中，如果$3$个舍弃位是$100$，则需要根据尾数末位判断。尾数末位为$0$，直接截断；末位为$1$，截断多余位，并在末位加一。</li>
+<li>溢出判断。</li>
+</ol>
+<h2 id="数据的存储和排列"><a href="#数据的存储和排列" class="headerlink" title="数据的存储和排列"></a>数据的存储和排列</h2><ul>
+<li>最高有效字节$(MSB)$：一个数值的最左边字节。</li>
+<li>最低有效字节$(LSB)$：一个数值的最右边字节。</li>
+<li>大端模式：把最高的有效字节存到更低地址部分，最低有效字节存在较高地址部分，便于人类阅读。</li>
+<li>小端模式：与大端模式相反，便于机器处理。</li>
+<li>边界对齐：现代计算机按照字节编址，通常也支持按字、按半字、按字节寻址。每次访存只能读/写一个字。</li>
+</ul>
+<p><img src="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/30.png" alt></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Mi-Da-Da.github.io">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://mi-da-da.github.io/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/">http://mi-da-da.github.io/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Mi-Da-Da.github.io" target="_blank">米大大的Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97/">计算机组成原理 数据的表示和计算</a></div><div class="post-share"><div class="social-share" data-image="/img/small094121jUdYg1738892481.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" title="考研之计算机组成原理——计算机系统概述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">考研之计算机组成原理——计算机系统概述</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——存储系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">考研之计算机组成原理——存储系统</div></div><div class="info-2"><div class="info-item-1">存储系统基本概念存储器的层次化结构  主存和辅存：实现虚拟存储系统，解决了主存容量不够的问题。主存与辅存之间的数据交换需要硬件和操作系统。 $Cache$和主存：解决了主存和$CPU$速度不匹配的问题。  &emsp;&emsp;按层次分类：  高速缓存$(Cache)$，可直接被$CPU$读写。 主存储器，可直接被$CPU$读写。 辅助存储器。  &emsp;&emsp;按介质分类：  半导体存储器（主存、$Cache$）：通过半导体器件存储信息。 磁表面存储器（磁盘、磁带）：以磁性材料存储信息。 光存储器：以光介质存储信息。  &emsp;&emsp;按存取方式分类：  随机存取存储器$(Random{\ }Access{\ }Memory,RAM)$：读写任何一个存储单元所需时间相同，与存储单元的物理位置无关。 顺序存取存储器$(Sequential{\ }Access{\ }Memory,SAM)$：读写任何一个存储单元所需时间取决于存储单元的物理位置。 直接存取存储器$(Direct{\ }Access{\...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/small094121jUdYg1738892481.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Tom</div><div class="author-info-description">记录生活的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mi-Da-Da"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AE%A1%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">数据的表示和计算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">数据的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E4%BD%8D%E8%AE%A1%E6%95%B0%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">进位计数制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E5%92%8C%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">定点数和浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.3.</span> <span class="toc-text">强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">3.</span> <span class="toc-text">整数的计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">加法器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83ALU"><span class="toc-number">3.2.</span> <span class="toc-text">算术逻辑单元ALU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">3.3.</span> <span class="toc-text">定点数的移位运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E8%BF%90%E7%AE%97"><span class="toc-number">3.4.</span> <span class="toc-text">定点数的加减运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E8%BF%90%E7%AE%97"><span class="toc-number">3.5.</span> <span class="toc-text">无符号数的加减运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-number">3.6.</span> <span class="toc-text">无符号整数的乘法运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-number">3.7.</span> <span class="toc-text">带符号整数的乘法运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-number">3.8.</span> <span class="toc-text">实现乘法运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E9%99%A4%E6%B3%95"><span class="toc-number">3.9.</span> <span class="toc-text">无符号整数的除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E9%99%A4%E6%B3%95"><span class="toc-number">3.10.</span> <span class="toc-text">带符号整数的除法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">浮点数的计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IEEE-754-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">4.1.</span> <span class="toc-text">IEEE 754 浮点数的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E8%8C%83%E5%9B%B4"><span class="toc-number">4.2.</span> <span class="toc-text">浮点数的表示范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E8%BF%90%E7%AE%97"><span class="toc-number">4.3.</span> <span class="toc-text">浮点数的加减运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E6%8E%92%E5%88%97"><span class="toc-number">4.4.</span> <span class="toc-text">数据的存储和排列</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——输入和输出系统">考研之计算机组成原理——输入和输出系统</a><time datetime="2026-05-25T11:21:45.000Z" title="发表于 2026-05-25 19:21:45">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%80%BB%E7%BA%BF/" title="考研之计算机组成原理——总线">考研之计算机组成原理——总线</a><time datetime="2026-05-25T11:21:02.000Z" title="发表于 2026-05-25 19:21:02">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" title="考研之计算机组成原理——中央处理器">考研之计算机组成原理——中央处理器</a><time datetime="2026-05-25T11:20:52.000Z" title="发表于 2026-05-25 19:20:52">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——指令系统">考研之计算机组成原理——指令系统</a><time datetime="2026-05-25T11:20:42.000Z" title="发表于 2026-05-25 19:20:42">2026-05-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/25/%E8%80%83%E7%A0%94%E4%B9%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" title="考研之计算机组成原理——存储系统">考研之计算机组成原理——存储系统</a><time datetime="2026-05-25T11:20:33.000Z" title="发表于 2026-05-25 19:20:33">2026-05-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://mi-da-da.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
